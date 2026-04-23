@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NURS 5209 — Exam 4 Blueprint Quiz 2</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a2f5a;--teal:#1e6fa8;--teal-lt:#e8f3fb;
+  --green:#0d7a55;--green-lt:#e6f5ef;--green-bd:#0d7a55;
+  --red:#b91c1c;--red-lt:#fef2f2;--red-bd:#b91c1c;
+  --amber:#92400e;--amber-lt:#fffbeb;
+  --slate:#f8fafc;--border:#e2e8f0;
+  --text:#1e293b;--text2:#475569;--text3:#94a3b8;
+}
+body{font-family:'Inter',sans-serif;background:#f1f5f9;color:var(--text);min-height:100vh;padding:1.5rem 1rem}
+.wrap{max-width:720px;margin:0 auto}
+.hdr{background:linear-gradient(135deg,var(--navy) 0%,#2563a8 100%);color:#fff;border-radius:18px;padding:1.75rem 2rem 1.5rem;margin-bottom:1.25rem}
+.hdr-top{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:.6rem}
+.chip{background:rgba(255,255,255,0.18);border-radius:20px;padding:3px 11px;font-size:.72rem;font-weight:500}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.25rem}
+.hdr p{font-size:.78rem;opacity:.7;margin-bottom:1rem}
+.prog-track{height:5px;background:rgba(255,255,255,0.2);border-radius:3px;margin-bottom:.6rem}
+.prog-fill{height:5px;border-radius:3px;background:#34d399;transition:width .4s}
+.hdr-stats{display:flex;gap:2rem;font-size:.75rem;opacity:.85}
+.sv{font-weight:600;color:#34d399}
+.card{background:#fff;border-radius:14px;padding:1.6rem;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);margin-bottom:1rem}
+.q-meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1rem}
+.tag{font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:20px;padding:2px 9px}
+.tag-mod{background:#eff6ff;color:#1d4ed8}
+.tag-ch{background:#f5f3ff;color:#6d28d9}
+.tag-topic{background:var(--teal-lt);color:var(--teal)}
+.vig{background:var(--teal-lt);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:11px 14px;font-size:.875rem;line-height:1.7;color:var(--text2);margin-bottom:1rem}
+.stem{font-size:.95rem;font-weight:500;line-height:1.6;margin-bottom:1rem}
+.opt{display:flex;align-items:flex-start;gap:11px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;margin-bottom:7px;cursor:pointer;transition:all .15s;font-size:.875rem;line-height:1.5}
+.opt:hover:not(.locked){background:var(--slate);border-color:#94a3b8}
+.opt.correct{border-color:var(--green-bd);background:var(--green-lt);color:#064e35}
+.opt.wrong{border-color:var(--red-bd);background:var(--red-lt);color:var(--red)}
+.opt.locked{cursor:default}
+.ol{font-weight:600;min-width:18px;font-size:.8rem;margin-top:1px}
+.opt.correct .ol{color:var(--green-bd)}
+.opt.wrong .ol{color:var(--red)}
+.rat{margin-top:1rem;border-radius:9px;padding:13px 15px;font-size:.85rem;line-height:1.75;display:none}
+.rat.show{display:block}
+.rat.ok{background:var(--green-lt);border:1px solid #86efac;color:#064e35}
+.rat.ng{background:var(--red-lt);border:1px solid #fca5a5;color:#7f1d1d}
+.rat-hdr{font-weight:600;font-size:.88rem;margin-bottom:5px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem}
+.btn{padding:8px 18px;border:1.5px solid var(--border);border-radius:9px;background:#fff;color:var(--text);font-size:.875rem;font-family:'Inter',sans-serif;font-weight:500;cursor:pointer;transition:all .15s}
+.btn:hover{background:var(--slate);border-color:#94a3b8}
+.btn:disabled{opacity:.3;cursor:default}
+.btn.go{background:var(--green);color:#fff;border-color:var(--green)}
+.btn.go:hover{background:var(--green-bd)}
+.results-card{background:#fff;border-radius:14px;padding:2.5rem;text-align:center;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);margin-bottom:1.25rem}
+.score-num{font-family:'Playfair Display',serif;font-size:5rem;font-weight:600;line-height:1}
+.score-sub{color:var(--text3);font-size:.85rem;margin-top:6px}
+.score-grade{font-size:1.1rem;font-weight:500;margin-top:10px}
+.rv-item{padding:9px 13px;border-radius:9px;margin-bottom:6px;font-size:.78rem;line-height:1.5;text-align:left}
+.rv-item.ok{background:var(--green-lt);border:1px solid #86efac}
+.rv-item.ng{background:var(--red-lt);border:1px solid #fca5a5}
+.rv-q{font-weight:600;color:var(--text);margin-bottom:2px}
+.rv-d{color:var(--text2)}
+@media(max-width:580px){.hdr h1{font-size:1.25rem}.score-num{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <div class="hdr-top">
+    <span class="chip">NURS 5209 · Exam 4</span>
+    <span class="chip">Blueprint Edition 2</span>
+    <span class="chip">Click answer → instant rationale</span>
+  </div>
+  <h1>Advanced Health Assessment Practice Exam</h1>
+  <p>Modules 10–14 · Chapters 18, 23, 24, 25, 26, 27 · 50 New Questions</p>
+  <div class="prog-track"><div class="prog-fill" id="prog" style="width:2%"></div></div>
+  <div class="hdr-stats">
+    <span>Question <span class="sv" id="qn">1</span>/50</span>
+    <span>Answered: <span class="sv" id="ac">0</span></span>
+    <span>Correct: <span class="sv" id="cc">0</span></span>
+  </div>
+</div>
+<div id="qa"></div>
+</div>
+<script>
+const Q=[
+{mod:10,ch:18,topic:"Breast Exam Positioning",
+vig:"An NP is teaching a student how to inspect the breasts for retraction signs.",
+stem:"Which position BEST accentuates skin dimpling caused by tumor tethering to Cooper's ligaments?",
+opts:["Arms raised overhead","Hands pressed firmly on hips, contracting the pectoralis major","Lying supine with arms at sides","Sitting upright with arms crossed"],
+ans:1,rat:"Pressing hands firmly on hips CONTRACTS the pectoralis major muscle. This maneuver accentuates any skin DIMPLING or RETRACTION caused by tumor tethering to Cooper's ligaments or underlying muscle. A tumor not visible with arms relaxed may appear as a dimple or pucker when the pectoralis contracts. The four inspection positions: (1) arms at sides, (2) arms raised overhead, (3) hands on hips pressing in, (4) leaning forward."},
+
+{mod:10,ch:18,topic:"Nipple Discharge",
+vig:"A 44-year-old woman reports spontaneous discharge from her right nipple only. On compression the discharge is clear and serous. No mass is palpable.",
+stem:"Which characteristic of this discharge is MOST concerning for pathology?",
+opts:["Bilateral discharge in a breastfeeding mother","Spontaneous, unilateral, serous discharge — especially from a single duct","White milky discharge present up to 1 year after weaning","Discharge only expressible with firm pressure"],
+ans:1,rat:"PATHOLOGIC nipple discharge features: SPONTANEOUS (without squeezing), UNILATERAL, from a SINGLE DUCT, BLOODY or clear/serous. This presentation requires further workup — causes include intraductal papilloma (most common), ductal carcinoma in situ (DCIS), or invasive cancer. BENIGN (physiologic) discharge: bilateral, white/milky (galactorrhea), present in pregnancy or up to 1 year after weaning. Any spontaneous unilateral discharge warrants diagnostic mammogram, duct exploration, or ultrasound."},
+
+{mod:10,ch:18,topic:"Paget Disease",
+vig:"A 55-year-old woman presents with a dry, scaling, crusting lesion on the right nipple that has been present for 3 months. The nipple has a reddened, slightly ulcerated appearance.",
+stem:"What condition must be ruled out and what is the clinical significance?",
+opts:["Contact dermatitis — treat with hydrocortisone cream","Paget disease of the nipple — a form of intraductal carcinoma; any nipple dermatitis in a non-breastfeeding woman requires immediate referral","Eczema — reassure and follow up in 6 months","Normal skin change from bra friction"],
+ans:1,rat:"PAGET DISEASE of the nipple = intraductal carcinoma presenting as nipple skin changes. Early: unilateral dry, scaling crusts at the nipple apex spreading to the areola; possible yellow or bloody discharge. Late: nipple reddened, ulcerated, erythematous plaque. Key rule: any NIPPLE DERMATITIS in a non-breastfeeding woman requires immediate evaluation and referral — it cannot be attributed to benign skin conditions without ruling out Paget disease. Symptoms: tingling, burning, itching of the nipple."},
+
+{mod:10,ch:18,topic:"Fibrocystic vs Fibroadenoma",
+vig:"A 28-year-old woman has a 1.5 cm breast mass that is round, rubbery, elastic, and 'slips' out from under your fingers when you try to palpate it. It is nontender and has been present for 2 months.",
+stem:"Which diagnosis does this description MOST suggest?",
+opts:["Fibrocystic disease — bilateral nodular masses","Fibroadenoma — solid, rubbery, freely mobile ('slippery'), well-defined, usually nontender","Invasive cancer — hard and fixed","Mastitis — warm, tender, and erythematous"],
+ans:1,rat:"FIBROADENOMA: most common benign solid breast tumor in women under 30. Classic feel: SOLID, RUBBERY, ELASTIC, round/oval, well-defined margins, FREELY MOBILE — fingers 'slip' around it ('slippery' quality). Usually NONTENDER. Solitary. Confirmed by ultrasound and needle biopsy. Management: observe if <3 cm and classic features; excise if >5 cm, continuously enlarging, or suspicious ultrasound. Distinguish from FIBROCYSTIC: bilateral, multiple, feels like 'small water balloons,' cyclic tenderness."},
+
+{mod:10,ch:18,topic:"Mastectomy Exam",
+vig:"The NP is examining a 58-year-old woman who had a right mastectomy 3 years ago.",
+stem:"Where is the MOST COMMON site for breast cancer recurrence after mastectomy?",
+opts:["The opposite (left) breast","Right along the mastectomy incision line","The axillary lymph nodes only","The supraclavicular area only"],
+ans:1,rat:"The MOST COMMON site for recurrence after mastectomy is ALONG THE INCISION LINE. Breast tissue remains in this area — it is surgically impossible to remove it all. The NP should: inspect the incision site for redness/swelling/skin lesions, palpate from the clavicle to 3 inches above the waist using small circular motions along the incision, and palpate the axillae. Alert for small, hard, pea-sized red lumps along the incision — refer to oncology if found."},
+
+{mod:10,ch:27,topic:"Syphilitic Chancre",
+vig:"A 26-year-old woman has a solitary, painless genital ulcer. When you palpate the base between your thumb and finger it feels firm and indurated — like a button. Her inguinal lymph nodes are enlarged but nontender.",
+stem:"If this patient does NOT receive treatment, what will happen to the primary lesion and the disease?",
+opts:["The lesion will become increasingly painful and heal permanently","The lesion resolves spontaneously but the disease progresses to secondary syphilis with systemic rash, fever, and lymphadenopathy","The lesion will evolve into a painful abscess requiring drainage","The disease is cured once the lesion heals"],
+ans:1,rat:"PRIMARY SYPHILIS: the chancre RESOLVES SPONTANEOUSLY without treatment — but the disease does NOT go away. SECONDARY SYPHILIS follows weeks later: fever, generalized lymphadenopathy, malaise, and a MUCOCUTANEOUS RASH including the PALMS and SOLES (highly characteristic). Then LATENT syphilis (no symptoms but serologic positivity). Then potentially TERTIARY syphilis (cardiovascular, gummatous, neurosyphilis). Patients must understand that healing of the chancre ≠ cure."},
+
+{mod:10,ch:27,topic:"Postmenopausal Changes",
+vig:"During a well-woman exam for a 70-year-old woman, the NP notes pale, dry, non-rugated vaginal mucosa. The patient reports dyspareunia and urinary frequency.",
+stem:"What is the underlying cause of these changes?",
+opts:["Bacterial vaginosis","Estrogen deficiency causing vaginal atrophy — leads to thin dry mucosa, loss of rugae, alkaline pH, and increased UTI risk","Trichomoniasis","Normal variant in elderly women requiring no discussion"],
+ans:1,rat:"POSTMENOPAUSAL ATROPHIC VAGINITIS: caused by ESTROGEN DEFICIENCY. Changes: pale, thin, DRY mucosa; loss of RUGAE (normal folds); shortened vaginal vault; ALKALINE pH (normally acidic in reproductive years — the alkaline shift increases UTI risk); decreased lubrication; labial flattening. Symptoms: dyspareunia, vaginal dryness/burning, urinary frequency/urgency. Any POSTMENOPAUSAL VAGINAL BLEEDING requires immediate evaluation (transvaginal ultrasound ± endometrial biopsy). Treatment: topical vaginal estrogen, lubricants."},
+
+{mod:10,ch:27,topic:"Cervical Signs in Pregnancy",
+vig:"An NP examines a woman at 8 weeks gestation. On speculum exam the cervix appears bluish-purple.",
+stem:"What is this finding called and what causes it?",
+opts:["Goodell sign — cervical softening from increased vascularity","Chadwick sign — bluish discoloration of the cervix and vaginal mucosa from increased vascularity and engorgement in early pregnancy","Hegar sign — softening of the lower uterine segment","A sign of cervicitis requiring antibiotic treatment"],
+ans:1,rat:"CHADWICK SIGN: bluish-purple discoloration of the cervix and vaginal mucosa visible at 6–8 weeks gestation — caused by INCREASED VASCULARITY and venous engorgement from rising estrogen and progesterone. GOODELL SIGN: cervical SOFTENING (normally feels firm like the tip of the nose; in pregnancy it softens to feel like the lips) — also from increased vascularity. HEGAR SIGN: softening of the LOWER UTERINE SEGMENT at 10–12 weeks. All three are signs of early pregnancy detected on pelvic exam."},
+
+{mod:10,ch:26,topic:"Prostatitis DRE",
+vig:"A 32-year-old man has fever, chills, perineal pain, dysuria, and urethral discharge. On DRE the prostate is exquisitely tender and slightly boggy.",
+stem:"Why must the DRE in acute bacterial prostatitis be performed briefly and gently?",
+opts:["It is too painful to perform at all — skip the exam","Vigorous massage can force bacteria into the bloodstream causing bacteremia and sepsis","The prostate is too small to feel in acute prostatitis","Brief exam prevents the Prehn sign from developing"],
+ans:1,rat:"In acute bacterial prostatitis, the prostate is heavily colonized with bacteria. VIGOROUS or prolonged DRE forces bacteria into the bloodstream → BACTEREMIA → potentially SEPSIS. Perform briefly and gently — just enough to confirm the clinical diagnosis (exquisitely tender, swollen, slightly boggy prostate). The exam is NOT contraindicated but must be brief. Distinguish: BPH = nontender enlarged prostate. Cancer = stone-hard fixed nodule. PROSTATITIS = exquisitely tender (the hallmark)."},
+
+{mod:10,ch:25,topic:"Varicocele",
+vig:"A 21-year-old male has a dull aching sensation in his left scrotum. On exam, with the patient standing, you palpate a soft, tortuous, worm-like mass along the left spermatic cord that diminishes when he lies down.",
+stem:"Why is this condition predominantly LEFT-sided and what is its clinical significance?",
+opts:["Left-sided because the left testis is always larger; no clinical significance","Left-sided because the left testicular vein drains at a right angle into the left renal vein, creating higher venous pressure; associated with male infertility","Left-sided because of gravity; no treatment available","Left-sided due to trauma; resolves spontaneously"],
+ans:1,rat:"VARICOCELE = dilation of the pampiniform plexus veins ('bag of worms'). Predominantly LEFT-SIDED (85–90%): the left testicular vein drains at a RIGHT ANGLE (90°) into the LEFT RENAL VEIN → higher hydrostatic pressure. The right testicular vein drains obliquely into the IVC at lower pressure. More prominent STANDING (increased venous pressure), reduces RECUMBENT. Clinical significance: increased scrotal temperature from venous pooling → impaired spermatogenesis → MALE INFERTILITY. Screen adolescents early; obtain scrotal ultrasound."},
+
+{mod:10,ch:25,topic:"Hydrocele",
+vig:"A 3-month-old male infant has a non-tender swelling of the right scrotum. Transillumination shows a pink-red glow through the entire swelling. The testis is palpable.",
+stem:"What is this finding and what is the expected course?",
+opts:["Testicular torsion — surgical emergency","Hydrocele — a collection of serous fluid around the testis; transilluminates; usually resolves spontaneously in the first year of life","Inguinal hernia — does not transilluminate","Orchitis — associated with mumps infection"],
+ans:1,rat:"HYDROCELE: circumscribed collection of SEROUS FLUID in the tunica vaginalis surrounding the testis. TRANSILLUMINATES (fluid transmits light as pink/red glow). Nontender. Testis palpable within the fluid. In INFANTS: usually resolves spontaneously by 12 months as the processus vaginalis closes. Persisting beyond 1 year or appearing in older males may require surgical repair. Distinguish from: TESTICULAR TUMOR — does NOT transilluminate (solid). TORSION — acute painful, high-riding testis, no transillumination. HERNIA — bowel extends into scrotum, cannot get fingers above mass."},
+
+{mod:10,ch:25,topic:"Paraphimosis",
+vig:"A 20-year-old uncircumcised male presents 3 hours after his foreskin was retracted and became stuck behind the glans. The glans is swollen and the foreskin forms a tight ring.",
+stem:"What is the MOST URGENT concern with this condition?",
+opts:["Increased risk of future UTIs if not circumcised","Progressive swelling → venous and lymphatic obstruction → potential arterial compromise and gangrene if not reduced immediately","Pain alone — no structural risk","Increased risk of STIs from the exposed glans"],
+ans:1,rat:"PARAPHIMOSIS is a MEDICAL EMERGENCY. The retracted foreskin forms a CONSTRICTING RING behind the glans → blocks venous and lymphatic drainage → glans SWELLS progressively → edema makes reduction harder → eventually arterial compromise → GANGRENE. Must be reduced IMMEDIATELY: (1) Manual reduction — compress glans firmly to reduce edema, then push glans through foreskin. (2) Dorsal slit or emergency circumcision if manual reduction fails. Time-sensitive — do NOT delay. Contrast: PHIMOSIS = non-retractable foreskin (not acute emergency unless obstructing urine flow)."},
+
+{mod:10,ch:27,topic:"Trichomoniasis",
+vig:"A 23-year-old woman presents with profuse, frothy, yellow-green vaginal discharge with a foul odor. The vaginal walls appear diffusely red. Vaginal pH is 5.8.",
+stem:"What microscopic finding confirms trichomoniasis?",
+opts:["Clue cells on saline wet mount","Flagellated motile organisms on saline wet mount","Branched hyphae on KOH prep","Gram-negative intracellular diplococci"],
+ans:1,rat:"TRICHOMONIASIS: caused by Trichomonas vaginalis (a flagellated protozoan — an STI). Confirmed by SALINE WET MOUNT showing FLAGELLATED, MOTILE, pear-shaped organisms (they move on the slide). Features: frothy yellow-green MALODOROUS discharge, diffuse vaginal erythema, 'STRAWBERRY CERVIX' (red raised papules/petechiae on cervix), pH >4.5. Contrast: BV = CLUE CELLS. CANDIDA = branched HYPHAE on KOH. GONORRHEA = Gram-negative intracellular diplococci."},
+
+{mod:10,ch:27,topic:"PID / CMT",
+vig:"On bimanual exam of a febrile 26-year-old woman with pelvic pain, moving the cervix from side to side produces intense pain. She involuntarily pulls away.",
+stem:"What is this clinical finding called?",
+opts:["Goodell sign","Cervical motion tenderness — the 'chandelier sign' — indicates peritoneal irritation consistent with PID","Hegar sign","Positive Prehn sign"],
+ans:1,rat:"CERVICAL MOTION TENDERNESS (CMT) = 'CHANDELIER SIGN' — named because the patient 'jumps up toward the chandelier' when the cervix is moved. It indicates PERITONEAL IRRITATION from infection spreading from the lower genital tract to the endometrium and fallopian tubes = PID until proven otherwise. PID organisms: Chlamydia trachomatis, Neisseria gonorrhoeae, polymicrobial (BV flora). Complications: ectopic pregnancy, infertility, chronic pelvic pain. Treatment: dual antibiotic therapy (ceftriaxone + doxycycline ± metronidazole)."},
+
+{mod:10,ch:18,topic:"Breast Developmental Competence — Neonate",
+vig:"A 2-day-old female neonate has visible breast enlargement bilaterally and secretes a small amount of milky fluid from both nipples.",
+stem:"What is the appropriate management?",
+opts:["Refer to pediatric endocrinology for hormonal evaluation","Reassure — physiologic neonatal breast enlargement from maternal estrogen is normal and resolves within days to weeks","Begin formula supplementation immediately","Order breast ultrasound to rule out tumor"],
+ans:1,rat:"NEONATAL BREAST ENLARGEMENT: maternal estrogen crosses the placenta → bilateral breast bud swelling and possible 'witch's milk' (milky secretion) in BOTH male and female neonates. This is a NORMAL finding that requires NO intervention and resolves spontaneously within days to weeks as maternal estrogen clears. It is NOT a sign of pathology or a reason for endocrine workup. Simple REASSURANCE is the appropriate management."},
+
+{mod:11,ch:23,topic:"Drop Arm Test",
+vig:"A 55-year-old painter cannot raise his right arm above 90° and has pain with abduction. You passively abduct his arm to 90°; when you release it, he is unable to hold it up and it drops to his side.",
+stem:"What does a positive drop arm test indicate?",
+opts:["ACL tear of the shoulder","Complete rotator cuff tear, most commonly the supraspinatus tendon","Adhesive capsulitis — frozen shoulder","Biceps tendon rupture"],
+ans:1,rat:"POSITIVE DROP ARM TEST: arm passively abducted to 90°; when released the patient CANNOT sustain the position and the arm DROPS. Indicates a COMPLETE ROTATOR CUFF TEAR — most commonly the SUPRASPINATUS tendon (the most commonly torn rotator cuff muscle). The supraspinatus runs through the subacromial space and initiates abduction. The painful arc of 60°–120° is also characteristic of supraspinatus pathology. Management: orthopedic referral, MRI to confirm extent of tear."},
+
+{mod:11,ch:23,topic:"Articular vs Extra-Articular",
+vig:"Patient A has pain and swelling limited to the lateral epicondyle of the right elbow, only painful with resisted wrist extension. Patient B has warm, boggy swelling around the entire right elbow joint with pain on ALL movements.",
+stem:"Which correctly classifies each patient's disease as articular or extra-articular?",
+opts:["Both are extra-articular","Patient A = extra-articular (tendon/ligament — specific location, specific planes of ROM); Patient B = articular (inside the joint — diffuse swelling, all planes of ROM limited)","Patient A = articular; Patient B = extra-articular","Both are articular"],
+ans:1,rat:"EXTRA-ARTICULAR disease (Patient A — lateral epicondylitis): involves a TENDON, LIGAMENT, BURSA, or NERVE outside the joint. Pain and swelling in ONE SPECIFIC SPOT. Only CERTAIN PLANES of ROM are affected (those using the damaged structure). ARTICULAR disease (Patient B — RA or arthritis): involves structures INSIDE the joint (synovium, cartilage). DIFFUSE swelling and tenderness AROUND THE WHOLE JOINT. ALL PLANES of ROM are limited and painful. This distinction guides diagnosis and treatment."},
+
+{mod:11,ch:23,topic:"Scoliosis Screen",
+vig:"During a sports physical for a 13-year-old girl, the NP asks her to bend forward at the waist with hands clasped. Viewed from behind, there is a prominent right thoracic rib hump.",
+stem:"What causes the rib hump and what imaging is ordered?",
+opts:["The hump appears on the CONCAVE side; no imaging needed","The hump appears on the CONVEX side — vertebral rotation carries the ribs posteriorly on the convex side; order full-spine X-ray to measure the Cobb angle","The hump is always on the left side in females","The hump is caused by kyphosis; lateral X-ray only needed"],
+ans:1,rat:"SCOLIOSIS (Adams forward bend test): the RIB HUMP appears on the CONVEX side of the spinal curve — because the vertebrae ROTATE toward the convex side, carrying the attached ribs POSTERIORLY to create the hump. RIGHT thoracic scoliosis = right rib hump (most common pattern in idiopathic adolescent scoliosis). Full-spine X-ray is ordered to measure the COBB ANGLE: <10° = normal; 10–24° = monitor; 25–40° = BRACING (growing adolescents); >40–50° = surgical evaluation."},
+
+{mod:11,ch:23,topic:"Gout",
+vig:"A 56-year-old obese male wakes with excruciating right great toe pain, redness, and swelling. He takes hydrochlorothiazide for hypertension.",
+stem:"Which medication is a known TRIGGER for gout attacks?",
+opts:["Metformin","Hydrochlorothiazide — thiazide diuretics reduce renal urate excretion causing hyperuricemia","Lisinopril","Metoprolol"],
+ans:1,rat:"GOUT TRIGGERS: the most common medication trigger is THIAZIDE DIURETICS (hydrochlorothiazide) — they REDUCE renal urate excretion → hyperuricemia → urate crystal deposition in joints. The FIRST METATARSOPHALANGEAL (MTP) JOINT of the great toe is the classic target (podagra). Other triggers: alcohol (beer especially), purine-rich foods, dehydration, surgery, trauma. Confirmed by needle-shaped, negatively birefringent crystals on joint aspiration polarized microscopy. Treatment: colchicine or NSAIDs for acute attack; allopurinol/febuxostat for chronic urate lowering."},
+
+{mod:11,ch:23,topic:"Plantar Fasciitis",
+vig:"A 45-year-old runner has heel pain that is worst with his first steps in the morning. He has point tenderness at the medial plantar heel.",
+stem:"What is the characteristic timing pattern that helps diagnose plantar fasciitis?",
+opts:["Pain is constant throughout the day and night","Worst with the FIRST STEPS IN THE MORNING or after rest — improves with activity then may worsen again later","Pain only during running, completely absent at rest","Pain only in the evening after a full day of activity"],
+ans:1,rat:"PLANTAR FASCIITIS: the pathognomonic timing pattern is pain WORST WITH THE FIRST STEPS IN THE MORNING or after any period of rest (fascia shortens/tightens during rest; stretches with first weight-bearing → pain). Pain typically IMPROVES with activity as the fascia warms up, then may worsen again after prolonged walking. Point tenderness at the PLANTAR MEDIAL HEEL (medial tubercle of the calcaneus). Self-limiting (6–12 months). Treatment: rest, NSAIDs/steroids, calf/plantar fascia stretching, orthotics, night splints."},
+
+{mod:11,ch:23,topic:"Developmental — Clubfoot",
+vig:"A newborn has a foot that is fixed in INVERSION with forefoot adduction and pointing downward. The deformity CANNOT be corrected passively.",
+stem:"How does this differ from metatarsus adductus?",
+opts:["They are the same condition — both are treated with casting","Clubfoot (talipes equinovarus) is RIGID — cannot be passively corrected; metatarsus adductus is FLEXIBLE — can be passively corrected; clubfoot requires Ponseti casting from birth; metatarsus adductus usually resolves by age 3","Clubfoot is always bilateral; metatarsus adductus is always unilateral","Metatarsus adductus requires surgery; clubfoot resolves spontaneously"],
+ans:1,rat:"CLUBFOOT (talipes equinovarus): RIGID, FIXED triplane deformity — (1) inversion, (2) forefoot adduction, (3) equinus (foot pointing down). CANNOT be passively corrected. Incidence: 1–3:1000 births; males 2:1. Requires PONSETI SERIAL CASTING starting in the first week of life. METATARSUS ADDUCTUS: forefoot curves inward, HINDFOOT in normal alignment, FLEXIBLE — CAN be passively corrected. Usually resolves by age 3 without treatment. Passive correctability is the key distinguishing clinical test."},
+
+{mod:12,ch:24,topic:"CN III/IV/VI",
+vig:"A 68-year-old diabetic man presents with sudden-onset double vision. On exam his right eye is deviated DOWNWARD and OUTWARD ('down and out') and he has a drooping right eyelid (ptosis).",
+stem:"Which cranial nerve is most likely affected?",
+opts:["CN IV — trochlear nerve","CN VI — abducens nerve; the eye cannot abduct","CN III — oculomotor nerve; controls most eye movements, eyelid elevation, and pupil constriction","CN II — optic nerve; vision loss only"],
+ans:2,rat:"CN III (OCULOMOTOR) palsy: controls the superior rectus, inferior rectus, medial rectus, inferior oblique (most eye movements), LEVATOR PALPEBRAE (eyelid elevation), and PUPILLARY CONSTRICTION (via ciliary ganglion). Complete CN III palsy produces: (1) eye deviated DOWN and OUT (unopposed CN IV and VI), (2) PTOSIS (levator palpebrae weakness), (3) DILATED, FIXED PUPIL (parasympathetic loss — if the lesion is compressive). In DIABETIC CN III palsy: characteristically PUPIL-SPARING (ischemia damages the core motor fibers but spares the peripheral parasympathetic fibers). CN IV = downward gaze inability. CN VI = inability to abduct (look outward)."},
+
+{mod:12,ch:24,topic:"CN V Trigeminal",
+vig:"An NP tests cranial nerve V by asking the patient to clench their teeth. The jaw DEVIATES TO THE RIGHT when the patient clenches.",
+stem:"What does jaw deviation indicate and to which SIDE is the lesion?",
+opts:["Left CN V lesion — jaw deviates away from the lesion","Right CN V lesion — jaw deviates TOWARD the side of the lesion because the right pterygoid muscles are weak, allowing the intact left side to push the jaw right","Bilateral CN V lesion — always causes midline jaw position","CN VII lesion — jaw deviation is a facial nerve finding"],
+ans:1,rat:"CN V (TRIGEMINAL) MOTOR: tests the MASSETER and TEMPORALIS (jaw clenching) and PTERYGOID muscles (jaw opening and lateral deviation). On CLENCHING: normal = bilateral symmetry. Weak on one side → jaw DEVIATES TOWARD the weak side (toward the lesion). Here the jaw deviates RIGHT → RIGHT pterygoid is weak → RIGHT CN V motor lesion. CN V SENSORY: tests three divisions — V1 (ophthalmic/forehead), V2 (maxillary/cheek), V3 (mandibular/chin) — with cotton wisp bilaterally. CORNEAL REFLEX: V1 afferent + CN VII efferent."},
+
+{mod:12,ch:24,topic:"Cerebellar Signs",
+vig:"A 50-year-old woman cannot perform rapid alternating hand movements smoothly. The movements are irregular, arrhythmic, and clumsy. On finger-nose-finger testing her hand trembles MORE as it approaches your finger.",
+stem:"What two cerebellar signs are being described?",
+opts:["Resting tremor and bradykinesia — Parkinson's disease","Dysdiadochokinesia (impaired rapid alternating movements) and intention tremor (worsens approaching target) — both indicate cerebellar dysfunction","Asterixis and cogwheel rigidity — metabolic encephalopathy","Clonus and hyperreflexia — upper motor neuron disease"],
+ans:1,rat:"CEREBELLAR SIGNS: DYSDIADOCHOKINESIA = inability to perform rapid alternating movements smoothly (irregular, arrhythmic, clumsy). INTENTION TREMOR = worsens as the limb APPROACHES the target (finger-nose-finger test) — diminished at rest. Both are hallmarks of CEREBELLAR dysfunction. Full cerebellar constellation (DANISH): Dysdiadochokinesia, Ataxia, Nystagmus, Intention tremor, Scanning speech (dysarthria). Cerebellar hemisphere lesion = IPSILATERAL signs. Contrast: RESTING tremor (Parkinson's — worse at rest, improves with movement). ASTERIXIS = metabolic (liver/renal failure)."},
+
+{mod:12,ch:24,topic:"Kernig and Brudzinski",
+vig:"A 22-year-old college student presents with severe headache, fever, stiff neck, and photophobia. When the NP flexes her chin to her chest, the patient involuntarily flexes both hips and knees.",
+stem:"What sign is positive and what does it indicate?",
+opts:["Positive Romberg — proprioception deficit","Positive Brudzinski sign — hip and knee flexion with neck flexion indicates meningeal irritation","Positive Kernig sign — knee extension resistance with hip flexed","Positive Lasègue sign — sciatic nerve root irritation"],
+ans:1,rat:"BRUDZINSKI SIGN: sharply flex the chin to the chest → POSITIVE = involuntary FLEXION OF HIPS and KNEES = MENINGEAL IRRITATION (blood or infection in the subarachnoid space irritating the meninges). KERNIG SIGN: flex hip to 90° then attempt to extend the knee → POSITIVE = RESISTANCE and PAIN in the hamstrings (hamstrings go into spasm to protect inflamed nerve roots) = meningeal irritation. Both signs indicate MENINGITIS or SUBARACHNOID HEMORRHAGE. This presentation (headache + fever + stiff neck + photophobia) = bacterial meningitis until proven otherwise — EMERGENCY."},
+
+{mod:12,ch:24,topic:"Sensory Testing",
+vig:"With the patient's eyes closed, the NP places a quarter in the patient's right hand. The patient is unable to identify the object.",
+stem:"What is this finding called and what does it suggest?",
+opts:["Anomia — inability to name objects; left temporal lobe","Astereognosis — inability to identify objects by touch; indicates contralateral parietal lobe dysfunction","Agraphesthesia — inability to identify letters drawn on the palm","Anosmia — inability to identify smells"],
+ans:1,rat:"STEREOGNOSIS: the normal ability to identify familiar objects by touch alone with eyes closed. ASTEREOGNOSIS: inability to identify objects by touch = PARIETAL LOBE dysfunction (contralateral side). The parietal lobe mediates CORTICAL SENSORY DISCRIMINATION. Other cortical sensory tests: GRAPHESTHESIA (trace a number/letter on palm — identify with eyes closed; AGRAPHESTHESIA = parietal lesion) and TWO-POINT DISCRIMINATION (distinguish two simultaneously applied stimuli — decreased = parietal lesion). These higher cortical sensory functions are distinct from basic pain/touch/vibration (mediated by the thalamus)."},
+
+{mod:12,ch:24,topic:"Spinal Cord — Brown-Séquard",
+vig:"A patient sustains a right-sided spinal cord hemisection at T6. He has right-sided weakness and loss of vibration/position sense below T6, AND left-sided loss of pain and temperature below T6.",
+stem:"What syndrome is this and what explains the crossed pattern of deficits?",
+opts:["Complete spinal cord transection — symmetric deficits bilaterally","Brown-Séquard syndrome — ipsilateral motor and dorsal column loss (right); contralateral spinothalamic (pain/temperature) loss (left) because spinothalamic fibers cross at the level they enter the cord","Anterior cord syndrome — motor and pain loss with preserved vibration","Central cord syndrome — upper extremity weakness greater than lower"],
+ans:1,rat:"BROWN-SÉQUARD SYNDROME (spinal cord hemisection): IPSILATERAL (same side as lesion): (1) MOTOR paralysis (corticospinal tract — already crossed in the brainstem); (2) Loss of VIBRATION and POSITION SENSE (dorsal columns — cross in the brainstem). CONTRALATERAL (opposite side): (3) Loss of PAIN and TEMPERATURE (spinothalamic tract — crosses within 1–2 levels of entering the cord). The crossed pattern reflects where each pathway decussates. Pure Brown-Séquard is rare; most cases have ipsilateral weakness most prominent and contralateral sensory loss most prominent."},
+
+{mod:12,ch:24,topic:"Primitive Reflexes",
+vig:"A 10-month-old infant still has a strong palmar grasp reflex. His pediatrician is concerned.",
+stem:"At what age should the palmar grasp reflex normally disappear and what does persistence beyond this age suggest?",
+opts:["Disappears by 1 month; persistence at 10 months is catastrophic","Normally disappears by 4–6 months as cortical myelination enables inhibition; persistence at 10 months warrants neurologic evaluation for CNS dysfunction","Palmar grasp is normal at any age and never disappears","Palmar grasp disappears at 2 years — this infant is within normal limits"],
+ans:1,rat:"PALMAR GRASP REFLEX: present at birth (brainstem mediated). Should disappear by 4–6 MONTHS as the cerebral cortex myelinates and gains inhibitory control. At 10 months, the palmar grasp should be GONE — its persistence indicates possible CNS dysfunction (cerebral palsy, hypoxic-ischemic injury, developmental delay). Primitive reflexes and their expected disappearance ages: Moro = 4–6 months; Palmar grasp = 4–6 months; Rooting = 3–4 months; Babinski = normal up to 12–24 months (corticospinal tract myelinates later)."},
+
+{mod:13,ch:23,topic:"PPE Cardiac History",
+vig:"During a sports PPE, an 18-year-old athlete reports that he fainted DURING exercise last season. He thought it was dehydration.",
+stem:"Why is exercise-induced syncope a high-risk red flag on the PPE cardiac history?",
+opts:["Syncope during exercise is always from dehydration in athletes — no further workup needed","Exercise-induced syncope suggests a cardiac cause (HCM, arrhythmia, or coronary anomaly) — the heart cannot maintain adequate output under exertion; requires cardiology evaluation with ECG and echocardiogram before clearance","Syncope after exercise is more dangerous than during exercise","Only syncope with chest pain requires further evaluation"],
+ans:1,rat:"EXERCISE-INDUCED SYNCOPE is a HIGH-RISK AHA PPE cardiac history red flag. Syncope DURING exercise (not after) suggests an inability of the heart to maintain adequate cardiac output under physiologic stress — causes include HCM (outflow obstruction worsens with exertion and decreased preload), arrhythmias (long QT, Brugada, WPW), or anomalous coronary arteries. Dehydration typically causes POST-exercise syncope from vasovagal mechanisms. Any exercise-induced syncope requires: ECG, echocardiogram, and cardiology evaluation before sports clearance."},
+
+{mod:13,ch:23,topic:"PPE — Marfan Screening",
+vig:"A 16-year-old basketball player is 6'4\", has an arm span greater than his height, long slender fingers, and wears thick corrective lenses.",
+stem:"What potentially fatal complication must be screened for in this athlete?",
+opts:["Hypertrophic cardiomyopathy — concentric left ventricular hypertrophy","Aortic root dilation and risk of aortic dissection or rupture during high-intensity exercise","Long QT syndrome — arrhythmia during exercise","Coarctation of the aorta — high BP in upper extremities"],
+ans:1,rat:"MARFAN SYNDROME features: tall stature, arm span > height, ARACHNODACTYLY (long slender fingers), high-arched palate, pectus excavatum, lens subluxation (causing severe myopia/thick lenses). Potentially FATAL COMPLICATION: AORTIC ROOT DILATION → AORTIC DISSECTION or RUPTURE during high-intensity physical activity. Requires echocardiography to measure aortic root diameter. If dilated: restricted from collision sports and high-intensity activities. Caused by fibrillin-1 gene mutation affecting connective tissue integrity — aortic wall is weakened."},
+
+{mod:14,ch:99,topic:"Advance Directives — POLST",
+vig:"An NP is creating an advance care plan for a 72-year-old woman with stage IV cancer who wants comfort measures only. The patient's son disagrees.",
+stem:"Which document is MOST immediately actionable in an emergency and travels across ALL care settings?",
+opts:["A standard advance directive — signed by the patient","POLST — a physician-signed medical order specifying resuscitation status, level of intervention, and nutrition preferences; actionable by emergency responders across all settings","A verbal statement to family members","A DNR order valid only in the current hospital"],
+ans:1,rat:"POLST (Physician Orders for Life-Sustaining Treatment): an actual PHYSICIAN-SIGNED MEDICAL ORDER — unlike a standard advance directive (a patient-signed document stating preferences). POLST is: (1) IMMEDIATELY ACTIONABLE by emergency responders; (2) Valid across ALL care settings (home, ambulance, hospital, nursing home); (3) Specifies CPR/no-CPR, level of medical intervention, and artificial nutrition. A standard advance directive may not be followed by EMTs. A DNR is often hospital-specific. The son CANNOT override a valid POLST — it represents the patient's own decisions made with capacity."},
+
+{mod:14,ch:99,topic:"Urgent Assessment — Head Trauma",
+vig:"A 10-year-old fell from a skateboard without a helmet, lost consciousness for 30 seconds, and now has a severe headache and vomited twice.",
+stem:"Which combination of findings places this child at HIGH RISK for intracranial injury requiring CT?",
+opts:["Headache alone — very common after minor head trauma","Loss of consciousness + vomiting + severe headache = HIGH-RISK signs for intracranial injury; requires immediate CT head and ED transfer","The child is alert and oriented now — no further workup needed","Vomiting after head trauma is always benign and expected"],
+ans:1,rat:"PEDIATRIC HEAD TRAUMA high-risk features (PECARN criteria): ANY loss of consciousness (even brief), GCS <15, post-traumatic VOMITING (suggests elevated ICP — especially >1 episode), severe headache, amnesia, skull fracture on exam, high-impact mechanism (skateboard without helmet). This child has MULTIPLE high-risk features: LOC + vomiting + severe headache. Requires: immediate NON-CONTRAST CT HEAD + ED transfer. Do NOT discharge for home observation. Ibuprofen is CONTRAINDICATED in acute head trauma (bleeding risk)."},
+
+{mod:14,ch:99,topic:"Documentation — Assessment",
+vig:"After examining a patient with knee pain, the NP writes: 'Right knee pain, most consistent with medial meniscus tear based on positive McMurray test and medial joint line tenderness.'",
+stem:"Which SOAP section is this and what distinguishes it from the other sections?",
+opts:["Objective — physical exam findings always go here","Assessment — the clinician's INTERPRETATION and clinical judgment synthesizing the Subjective and Objective data into a working diagnosis or differential","Plan — the diagnosis guides the management plan so it belongs here","Subjective — the patient reported knee pain"],
+ans:1,rat:"SOAP — ASSESSMENT (A): the NP's CLINICAL INTERPRETATION — the diagnosis or differential diagnosis formulated by SYNTHESIZING the Subjective (patient-reported symptoms) and Objective (exam findings, vitals, labs) data. It answers: 'What do I think is going on?' SUBJECTIVE (S) = patient reports. OBJECTIVE (O) = clinician measures/observes. ASSESSMENT (A) = clinician's interpretation. PLAN (P) = management steps that logically flow from the assessment (tests, medications, referrals, follow-up). The Assessment is the NP's clinical reasoning on paper."},
+
+{mod:14,ch:99,topic:"Geriatric — Delirium",
+vig:"A 79-year-old man was sharp yesterday but today is confused, agitated, picks at his IV line, and has a fever of 39.2°C. His daughter says 'this is not him.'",
+stem:"What condition is this and what is the MOST important next step?",
+opts:["Baseline dementia — confusion is expected in elderly patients with fever","Delirium — acute onset, fluctuating confusion always has an underlying MEDICAL CAUSE that must be identified and treated; find and treat the cause (infection, medications, metabolic, pain, urinary retention)","Sundowning — no workup needed","New psychiatric illness — refer to psychiatry"],
+ans:1,rat:"DELIRIUM: ACUTE (hours to days) onset, FLUCTUATING course, impaired ATTENTION, often with perceptual disturbances (picking at IV = visual hallucinations). ALWAYS has an underlying MEDICAL CAUSE. Common causes in elderly: INFECTION (pneumonia, UTI, sepsis — most common), medications (opioids, benzodiazepines, anticholinergics), metabolic (hypo/hyperglycemia, hyponatremia), pain, urinary retention, fecal impaction, dehydration. MOST IMPORTANT STEP: IDENTIFY and TREAT THE CAUSE — delirium is REVERSIBLE if the cause is found and treated. Distinguish from DEMENTIA: chronic, gradual, stable day-to-day."},
+
+{mod:10,ch:18,topic:"Tanner — Male SMR",
+vig:"A 14-year-old male has sparse, slightly pigmented, straight pubic hair at the base of the penis only. His testes are enlarged and his scrotum is reddened and more textured.",
+stem:"What Tanner stage does this describe for BOTH pubic hair and genitalia?",
+opts:["Stage 1 — no pubic hair or genital development","Stage 2 pubic hair (sparse, straight, slightly pigmented, base of penis only) and Stage 2 genitalia (testicular enlargement, reddened/textured scrotal skin) — the first sign of puberty in males","Stage 4 pubic hair and Stage 3 genitalia","Stage 3 pubic hair and Stage 4 genitalia"],
+ans:1,rat:"MALE TANNER STAGING: STAGE 2 PUBIC HAIR = sparse, slightly pigmented, STRAIGHT hair at the BASE OF THE PENIS ONLY. STAGE 2 GENITALIA = TESTICULAR ENLARGEMENT (first sign of puberty in males) + SCROTAL skin reddening and increasing texture. Stage 2 is the FIRST SIGN OF PUBERTY in males — typically beginning between ages 9–14. Mean age of Stage 2 in males: approximately 11.5 years. Testicular enlargement (Stage 2 genitalia) typically PRECEDES pubic hair development in males."},
+
+{mod:11,ch:23,topic:"Shoulder Anatomy — SITS",
+vig:"An NP student is asked to identify which rotator cuff muscle is the PRIMARY internal rotator of the shoulder.",
+stem:"Which SITS muscle is the ONLY anterior rotator cuff muscle and the primary internal rotator?",
+opts:["Supraspinatus — initiates abduction","Infraspinatus — primary external rotator","Teres minor — external rotation and adduction","Subscapularis — the only anterior rotator cuff muscle; primary internal rotator"],
+ans:3,rat:"SITS rotator cuff muscles and primary actions: SUPRASPINATUS = initiates ABDUCTION (first 15°); runs through subacromial space; MOST COMMONLY TORN. INFRASPINATUS = EXTERNAL ROTATION (large posterior muscle on scapula). TERES MINOR = EXTERNAL ROTATION + adduction (works with infraspinatus). SUBSCAPULARIS = PRIMARY INTERNAL ROTATION; the ONLY ANTERIOR rotator cuff muscle (on the anterior surface of the scapula); pulls the arm anteriorly = internal rotation. Memory: Subscapularis is on the front → Internal rotation. The other three are posterior → External rotators."},
+
+{mod:12,ch:24,topic:"CN II Optic",
+vig:"A 68-year-old woman notices she cannot see anything in her LEFT visual field in BOTH eyes. She had a right occipital lobe stroke.",
+stem:"What visual field defect is this and what explains it?",
+opts:["Right homonymous hemianopia — the right visual field is lost","Left homonymous hemianopia — the LEFT half of the visual field is lost in BOTH eyes; the right occipital cortex processes the LEFT visual field from both eyes (because the visual pathways cross at the optic chiasm)","Monocular blindness — the left optic nerve is damaged","Bitemporal hemianopia — pituitary tumor compressing the optic chiasm"],
+ans:1,rat:"HOMONYMOUS HEMIANOPIA: loss of the SAME HALF of the visual field in BOTH eyes. RIGHT occipital cortex = processes the LEFT visual field from both eyes (nasal fibers from left eye + temporal fibers from right eye cross at the optic chiasm → right optic tract → right occipital cortex). RIGHT occipital stroke = LEFT HOMONYMOUS HEMIANOPIA. BITEMPORAL HEMIANOPIA: loss of both temporal fields = pituitary tumor compressing the optic chiasm (where nasal fibers from both eyes cross). MONOCULAR blindness: optic nerve lesion before the chiasm."},
+
+{mod:12,ch:24,topic:"Lachman Test",
+vig:"A 17-year-old football player plants his foot and twists his knee. On exam, with the knee at 25° flexion, there is increased anterior tibial translation with a soft endpoint.",
+stem:"Why is this test performed at 20–30° rather than 90° of knee flexion?",
+opts:["90° flexion is too painful for the patient to tolerate","At 20–30° the hamstrings are RELAXED — allowing isolated ACL assessment; at 90° (anterior drawer test) hamstring tension can falsely stabilize the tibia reducing sensitivity from 85–98% to 50–70%","20–30° is used because it tests the PCL, not the ACL","The angle does not matter — both positions are equally sensitive"],
+ans:1,rat:"LACHMAN TEST at 20–30° FLEXION: the HAMSTRINGS are RELAXED at this angle → no competing tension → isolated ACL integrity assessment. Positive = increased ANTERIOR TIBIAL TRANSLATION + SOFT or ABSENT endpoint = ACL RUPTURE. Sensitivity 85–98%. ANTERIOR DRAWER TEST at 90° flexion: hamstring tension partially stabilizes the tibia → falsely negative results more common → sensitivity only 50–70%. Lachman is the PREFERRED clinical ACL test. ACL injury: non-contact pivoting mechanism, 'pop' sound, immediate hemarthrosis."},
+
+{mod:12,ch:24,topic:"CN VIII Hearing",
+vig:"A 70-year-old man has unilateral right-sided hearing loss. Weber test: sound lateralizes to the RIGHT ear. Rinne test right ear: bone conduction > air conduction.",
+stem:"What type of hearing loss does this indicate and in which ear?",
+opts:["Right sensorineural hearing loss","Right conductive hearing loss — Weber lateralizes to the affected ear in conductive loss (bone conduction > air conduction = abnormal Rinne on that side)","Left sensorineural hearing loss","Bilateral conductive hearing loss"],
+ans:1,rat:"HEARING LOSS TYPES: CONDUCTIVE (problem with sound transmission — ear canal, tympanic membrane, ossicles): WEBER lateralizes to the AFFECTED ear (sound conducted to the 'better' bone conduction side — the blocked ear). RINNE: BONE > AIR conduction (AB > BC is abnormal = conductive loss). SENSORINEURAL (problem with cochlea or CN VIII): WEBER lateralizes to the UNAFFECTED ear. RINNE: Air > Bone conduction (normal Rinne but diminished overall). This patient: Weber → RIGHT, Rinne → BC > AC on RIGHT = RIGHT CONDUCTIVE HEARING LOSS. Causes: cerumen impaction, otitis media, otosclerosis."},
+
+{mod:14,ch:99,topic:"Urgent Assessment — Sepsis",
+vig:"A 78-year-old nursing home resident is brought in confused and febrile at 39.6°C. BP is 88/54, HR 118. She was well yesterday.",
+stem:"Which findings constitute a geriatric RED FLAG requiring immediate urgent assessment and transfer?",
+opts:["Confusion alone — expected in elderly patients with any illness","Fever + altered mental status + hypotension + tachycardia = SEPSIS red flags in an elderly patient; requires IMMEDIATE fluid resuscitation, blood cultures, broad-spectrum antibiotics, and transfer to an emergency department","Tachycardia alone — this is normal in anxious patients","Low BP is a normal variant in elderly women"],
+ans:1,rat:"SEPSIS RED FLAGS in geriatric patients: fever (or hypothermia) + altered mental status + HYPOTENSION (SBP <90 or MAP <65) + TACHYCARDIA (HR >90). The elderly present with ATYPICAL and SUBTLE early signs — confusion or functional decline may be the FIRST and ONLY sign before hemodynamic compromise develops. IMMEDIATE management: IV access, fluid bolus (30 mL/kg), blood cultures ×2 BEFORE antibiotics, broad-spectrum antibiotics within 1 hour, transfer to ED. Sepsis in elderly has HIGH MORTALITY — do not delay based on 'well-appearing.'"},
+
+{mod:10,ch:27,topic:"PCOS",
+vig:"A 22-year-old woman presents with irregular menses, acne, facial hair, and weight gain. On bimanual exam both ovaries feel enlarged with multiple smooth masses.",
+stem:"What is the most likely diagnosis and what metabolic complication is associated?",
+opts:["Endometriosis — fixed tender uterus with nodular masses","PCOS — bilateral enlarged ovaries with multiple cystic masses; associated with INSULIN RESISTANCE and increased risk of type 2 diabetes","PID — bilateral adnexal masses with CMT","Uterine fibroids — irregular nodular enlarged uterus"],
+ans:1,rat:"POLYCYSTIC OVARY SYNDROME (PCOS): affects 6–15% of reproductive-age women. Features: IRREGULAR MENSES (oligo/anovulation), HYPERANDROGENISM (acne, hirsutism, hair loss), WEIGHT GAIN, bilateral enlarged ovaries with multiple cystic follicles on ultrasound/bimanual exam. KEY METABOLIC COMPLICATION: INSULIN RESISTANCE → increased risk of type 2 DIABETES, metabolic syndrome, cardiovascular disease. Treatment: metformin (insulin sensitizer), hormonal regulation of menses (OCPs), weight loss. Infertility is common — refer to reproductive endocrinology."},
+
+{mod:10,ch:27,topic:"Endometriosis",
+vig:"A 30-year-old woman has progressive dysmenorrhea and dyspareunia for 3 years. On bimanual exam the uterus is FIXED and tender to movement. Small tender nodular masses are felt on the uterosacral ligaments.",
+stem:"What is the most likely diagnosis and what causes the uterus to be FIXED?",
+opts:["Uterine fibroids — firm, mobile, nodular uterus","Endometriosis — aberrant endometrial tissue scattered throughout the pelvis causes PELVIC ADHESIONS that TETHER and FIX the uterus; nodules on uterosacral ligaments are characteristic","PID — acute infection causes a fixed uterus from peritoneal irritation","Normal pelvic anatomy — the uterus is always fixed in reproductive-age women"],
+ans:1,rat:"ENDOMETRIOSIS: aberrant endometrial tissue outside the uterus (ovaries, fallopian tubes, uterosacral ligaments, bowel, bladder) that responds to hormones — builds up then SLOUGHS each cycle → INFLAMMATION → ADHESIONS. The adhesions TETHER and FIX the uterus to surrounding structures → FIXED, TENDER uterus on bimanual exam. Nodular, tender masses on UTEROSACRAL LIGAMENTS are characteristic. Symptoms: DYSMENORRHEA (cyclic or chronic), DYSPAREUNIA, infertility, low backache. Diagnosis: laparoscopy. Treatment: hormonal suppression, NSAIDs, surgery for adhesions."},
+
+{mod:11,ch:23,topic:"Knee Valgus/Varus Tests",
+vig:"The NP applies force pushing the knee INWARD (medially) with the leg extended and feels gapping of the medial joint space.",
+stem:"Which structure is being tested and what does gapping indicate?",
+opts:["Lateral collateral ligament — varus stress tests the LCL","Medial collateral ligament — valgus stress test; gapping of the medial joint = MCL tear","ACL — Lachman test is the correct MCL test","Posterior cruciate ligament — posterior drawer test"],
+ans:1,rat:"VALGUS STRESS TEST: apply force pushing the knee MEDIALLY (inward) with the leg extended. Tests the MEDIAL COLLATERAL LIGAMENT (MCL). Positive = gapping of the MEDIAL joint space = MCL tear. VARUS STRESS TEST: apply force pushing the knee LATERALLY (outward). Tests the LATERAL COLLATERAL LIGAMENT (LCL). Positive = gapping of the LATERAL joint space = LCL tear. The MCL is the most commonly injured knee ligament. Combined with ACL + medial meniscus = 'unhappy triad' (O'Donoghue triad) — common in contact sports."},
+
+{mod:12,ch:24,topic:"Oppenheim/Gordon/Hoffmann",
+vig:"The NP presses firmly with her thumb along the anterior tibial muscle of the shin. The patient's great toe dorsiflexes and the toes fan out.",
+stem:"What test was performed and what does the finding indicate?",
+opts:["Brudzinski sign — meningeal irritation","Oppenheim test — same positive response as Babinski sign (dorsiflexion of great toe + fanning); indicates UMN/corticospinal tract disease","Kernig sign — meningeal irritation from hamstring resistance","Romberg sign — proprioception deficit"],
+ans:1,rat:"OPPENHEIM TEST: press firmly with thumb and index finger along the ANTERIOR TIBIAL MUSCLE of the shin. Positive = SAME response as Babinski (great toe dorsiflexes + other toes fan out) = UPPER MOTOR NEURON (corticospinal tract) disease. Other pathologic reflexes producing the same UMN response: GORDON TEST (firmly squeeze the calf). HOFFMANN SIGN (sharply flick the nail of the middle finger → thumb and other fingers flex/adduct = UMN lesion of the upper extremities). All three are ADDITIONAL CONFIRMATORY TESTS for corticospinal tract disease when Babinski alone is equivocal."},
+
+{mod:14,ch:99,topic:"Urgent — Pediatric Fever",
+vig:"A 2-year-old presents with fever 40.1°C, irritability, a bulging fontanelle, and a non-blanching petechial rash spreading rapidly.",
+stem:"What is the most likely diagnosis and why is this a TIME-CRITICAL EMERGENCY?",
+opts:["Roseola — resolves spontaneously in 3 days","Meningococcal meningitis and septicemia — non-blanching petechial/purpuric rash + fever + meningeal signs = bacterial meningitis; mortality increases with every hour of delayed antibiotic treatment","Viral exanthem — treat with acetaminophen only","Henoch-Schönlein purpura — not urgent"],
+ans:1,rat:"NON-BLANCHING PETECHIAL/PURPURIC RASH + FEVER + MENINGEAL SIGNS = MENINGOCOCCAL DISEASE (Neisseria meningitidis) until proven otherwise. This is a TIME-CRITICAL EMERGENCY — mortality and morbidity increase dramatically with each hour of delayed antibiotic treatment. Bulging fontanelle = increased ICP. Do NOT delay antibiotics for imaging (give IM/IV ceftriaxone IMMEDIATELY if meningococcal disease is suspected). The non-blanching rash indicates hemorrhage into the skin from septicemia — bacterial emboli occlude small vessels. Transfer to ED immediately; blood cultures before but do NOT delay antibiotics."},
+
+{mod:14,ch:99,topic:"Urgent — Subarachnoid Hemorrhage",
+vig:"A 55-year-old man describes the 'worst headache of my life' that came on suddenly like a 'thunderclap' while watching TV. He has never had a headache like this before.",
+stem:"What is the presumptive diagnosis and what is the FIRST test to order?",
+opts:["Tension headache — treat with ibuprofen","Subarachnoid hemorrhage — thunderclap 'worst headache of life' is the classic presentation; FIRST test is non-contrast CT head (blood appears white in the subarachnoid space within first 6–12 hours); if CT negative but strong suspicion remains → lumbar puncture for xanthochromia","Migraine with aura — treat with sumatriptan","Cluster headache — treat with 100% oxygen"],
+ans:1,rat:"SUBARACHNOID HEMORRHAGE (SAH): classic presentation = 'WORST HEADACHE OF LIFE' with SUDDEN THUNDERCLAP onset — caused by rupture of a saccular (berry) aneurysm. Also: meningismus (stiff neck from blood irritating meninges), photophobia, nausea/vomiting, possible loss of consciousness. FIRST TEST: NON-CONTRAST CT HEAD — blood appears WHITE (hyperdense) in the subarachnoid space within the first 6–12 hours (sensitivity ~98% within 6 hours). If CT negative but clinical suspicion remains: LUMBAR PUNCTURE for XANTHOCHROMIA (yellow CSF from hemoglobin breakdown). HIGH MORTALITY — immediate neurosurgical evaluation."},
+
+{mod:10,ch:26,topic:"Colorectal Cancer Screening",
+vig:"A 46-year-old average-risk patient asks when she should start colorectal cancer screening.",
+stem:"At what age does the USPSTF recommend starting colorectal cancer (CRC) screening for AVERAGE-risk adults?",
+opts:["Age 40","Age 45","Age 50","Age 55"],
+ans:1,rat:"USPSTF (updated 2021): CRC screening for AVERAGE-RISK adults should begin at AGE 45 (lowered from age 50 in the 2021 update). Methods: annual FECAL IMMUNOCHEMICAL TEST (FIT), colonoscopy every 10 years, or other approved modalities. HIGH-RISK patients (personal/family history of CRC or adenomatous polyps, IBD, genetic syndromes like Lynch syndrome or FAP) should be screened EARLIER and more frequently. Removal of adenomatous polyps reduces CRC-related deaths — early detection is key. CRC is one of the most preventable cancers with appropriate screening."},
+
+{mod:12,ch:24,topic:"Leg Length Discrepancy",
+vig:"A 10-year-old girl walks with a dip or bob on her LEFT side every time she takes a step. Her left leg appears shorter than her right.",
+stem:"What gait pattern is described and what is the most common cause?",
+opts:["Parkinsonian gait — shuffling steps from basal ganglia disease","Short leg gait — the affected side dips/telescopes vertically with each step; caused by a leg length discrepancy >2.5 cm (1 inch) from DDH, prior fracture, or congenital shortening","Spastic hemiparesis — arm immobile and leg circumducts","Steppage gait — high knee lift from footdrop"],
+ans:1,rat:"SHORT LEG GAIT: caused by leg length discrepancy >2.5 cm (1 inch). The affected (shorter) side DIPS or TELESCOPES vertically with each step as the pelvis drops on that side. Compared with TRENDELENBURG/WADDLING gait (hip girdle weakness) where the OPPOSITE hip drops. Causes of short leg gait: congenital dislocated hip (DDH — untreated), fracture malunion with shortening, prior surgery. Diagnosed by: tape measure from ASIS to medial malleolus (true leg length) and by the Galeazzi test in infants. Treatment: heel lift for small discrepancies; surgical correction for large discrepancies."},
+];
+
+let cur=0,cor=Array(50).fill(false),sub=Array(50).fill(false),chosen=Array(50).fill(-1);
+
+function render(){
+  const q=Q[cur],done=sub[cur];
+  const opts=q.opts.map((o,i)=>{
+    let c='opt';
+    if(done){
+      c+=' locked';
+      if(i===q.ans)c+=' correct';
+      else if(chosen[cur]===i&&i!==q.ans)c+=' wrong';
+    }
+    return `<div class="${c}" id="o${i}" data-i="${i}" onclick="pick(${i})"><span class="ol">${'ABCD'[i]}.</span><span>${o}</span></div>`;
+  }).join('');
+  const rat=`<div class="rat ${done?(cor[cur]?'ok':'ng'):''} ${done?'show':''}" id="rat">
+    <div class="rat-hdr">${done?(cor[cur]?'✓ Correct!':'✗ Incorrect — Correct answer: '+'ABCD'[q.ans]+'.'):''}</div>
+    ${q.rat}
+  </div>`;
+  const answered=sub.filter(Boolean).length,correct=cor.filter(Boolean).length;
+  document.getElementById('prog').style.width=Math.round(((cur+1)/50)*100)+'%';
+  document.getElementById('qn').textContent=cur+1;
+  document.getElementById('ac').textContent=answered;
+  document.getElementById('cc').textContent=correct;
+  document.getElementById('qa').innerHTML=`<div class="card">
+    <div class="q-meta">
+      <span class="tag tag-mod">Module ${q.mod}</span>
+      <span class="tag tag-ch">Ch ${q.ch}</span>
+      <span class="tag tag-topic">${q.topic}</span>
+    </div>
+    ${q.vig?`<div class="vig">${q.vig}</div>`:''}
+    <div class="stem">${q.stem}</div>
+    ${opts}${rat}
+  </div>
+  <div class="nav" id="nav">
+    <button class="btn" onclick="go(cur-1)" ${cur===0?'disabled':''}>← Prev</button>
+    ${cur<49?`<button class="btn" onclick="go(cur+1)">Next →</button>`:''}
+    ${cur===49&&done?`<button class="btn go" onclick="results()">Final Score →</button>`:''}
+  </div>`;
+}
+
+function pick(i){
+  if(sub[cur])return;
+  chosen[cur]=i;
+  sub[cur]=true;
+  cor[cur]=(i===Q[cur].ans);
+  document.querySelectorAll('.opt').forEach(el=>{
+    const idx=parseInt(el.dataset.i);
+    el.classList.add('locked');
+    if(idx===Q[cur].ans)el.classList.add('correct');
+    else if(idx===i)el.classList.add('wrong');
+  });
+  const rat=document.getElementById('rat');
+  if(rat){
+    rat.classList.add('show',cor[cur]?'ok':'ng');
+    rat.querySelector('.rat-hdr').textContent=cor[cur]?'✓ Correct!':'✗ Incorrect — Correct answer: '+'ABCD'[Q[cur].ans]+'.';
+  }
+  document.getElementById('ac').textContent=sub.filter(Boolean).length;
+  document.getElementById('cc').textContent=cor.filter(Boolean).length;
+  if(cur===49){
+    const btn=document.createElement('button');
+    btn.className='btn go';btn.textContent='Final Score →';btn.onclick=results;
+    document.getElementById('nav').appendChild(btn);
+  }
+}
+
+function go(i){if(i<0||i>49)return;cur=i;render();}
+
+function results(){
+  const tot=cor.filter(Boolean).length,pct=Math.round((tot/50)*100);
+  let grade='',gc='var(--red)';
+  if(pct>=90){grade='A — Exam ready! 🎉';gc='var(--green)';}
+  else if(pct>=80){grade='B — Good — review missed topics';gc='var(--teal)';}
+  else if(pct>=70){grade='C — Needs more review';gc='var(--amber)';}
+  else{grade='Below passing — intensive review recommended';}
+  const rv=Q.map((q,i)=>{
+    const ok=cor[i];
+    return `<div class="rv-item ${ok?'ok':'ng'}">
+      <div class="rv-q">Q${i+1} · Ch${q.ch} · ${q.topic}</div>
+      <div class="rv-d">${ok?'✓ Correct':'✗ Incorrect — Answer: '+'ABCD'[q.ans]}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('prog').style.width='100%';
+  document.getElementById('qa').innerHTML=`
+    <div class="results-card">
+      <div class="score-num" style="color:${gc}">${pct}%</div>
+      <div class="score-sub">${tot} of 50 correct</div>
+      <div class="score-grade" style="color:${gc}">${grade}</div>
+    </div>
+    <div style="margin-bottom:1rem"><button class="btn" onclick="go(0)">← Review questions</button></div>
+    ${rv}`;
+}
+render();
+</script>
+</body>
+</html>
