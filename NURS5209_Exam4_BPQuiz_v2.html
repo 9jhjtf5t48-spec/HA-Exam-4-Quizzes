@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NURS 5209 — Exam 4 Blueprint Quiz</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a2f5a;--teal:#1e6fa8;--teal-lt:#e8f3fb;
+  --green:#0d7a55;--green-lt:#e6f5ef;--green-bd:#0d7a55;
+  --red:#b91c1c;--red-lt:#fef2f2;--red-bd:#b91c1c;
+  --amber:#92400e;--amber-lt:#fffbeb;
+  --slate:#f8fafc;--border:#e2e8f0;
+  --text:#1e293b;--text2:#475569;--text3:#94a3b8;
+}
+body{font-family:'Inter',sans-serif;background:#f1f5f9;color:var(--text);min-height:100vh;padding:1.5rem 1rem}
+.wrap{max-width:720px;margin:0 auto}
+.hdr{background:linear-gradient(135deg,var(--navy) 0%,#2563a8 100%);color:#fff;border-radius:18px;padding:1.75rem 2rem 1.5rem;margin-bottom:1.25rem}
+.hdr-top{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:.6rem}
+.chip{background:rgba(255,255,255,0.18);border-radius:20px;padding:3px 11px;font-size:.72rem;font-weight:500}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.25rem}
+.hdr p{font-size:.78rem;opacity:.7;margin-bottom:1rem}
+.prog-track{height:5px;background:rgba(255,255,255,0.2);border-radius:3px;margin-bottom:.6rem}
+.prog-fill{height:5px;border-radius:3px;background:#34d399;transition:width .4s}
+.hdr-stats{display:flex;gap:2rem;font-size:.75rem;opacity:.85}
+.sv{font-weight:600;color:#34d399}
+.card{background:#fff;border-radius:14px;padding:1.6rem;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);margin-bottom:1rem}
+.q-meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1rem}
+.tag{font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:20px;padding:2px 9px}
+.tag-mod{background:#eff6ff;color:#1d4ed8}
+.tag-ch{background:#f5f3ff;color:#6d28d9}
+.tag-topic{background:var(--teal-lt);color:var(--teal)}
+.vig{background:var(--teal-lt);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:11px 14px;font-size:.875rem;line-height:1.7;color:var(--text2);margin-bottom:1rem}
+.stem{font-size:.95rem;font-weight:500;line-height:1.6;margin-bottom:1rem}
+.opt{display:flex;align-items:flex-start;gap:11px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;margin-bottom:7px;cursor:pointer;transition:all .15s;font-size:.875rem;line-height:1.5}
+.opt:hover:not(.locked){background:var(--slate);border-color:#94a3b8}
+.opt.sel{border-color:var(--teal);background:var(--teal-lt)}
+.opt.correct{border-color:var(--green-bd);background:var(--green-lt);color:#064e35}
+.opt.wrong{border-color:var(--red-bd);background:var(--red-lt);color:var(--red)}
+.ol{font-weight:600;min-width:18px;font-size:.8rem;margin-top:1px}
+.opt.correct .ol{color:var(--green-bd)}
+.opt.wrong .ol{color:var(--red)}
+.rat{margin-top:1rem;border-radius:9px;padding:13px 15px;font-size:.85rem;line-height:1.75;display:none}
+.rat.show{display:block}
+.rat.ok{background:var(--green-lt);border:1px solid #86efac;color:#064e35}
+.rat.ng{background:var(--red-lt);border:1px solid #fca5a5;color:#7f1d1d}
+.rat-hdr{font-weight:600;font-size:.88rem;margin-bottom:5px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem}
+.btn{padding:8px 18px;border:1.5px solid var(--border);border-radius:9px;background:#fff;color:var(--text);font-size:.875rem;font-family:'Inter',sans-serif;font-weight:500;cursor:pointer;transition:all .15s}
+.btn:hover{background:var(--slate);border-color:#94a3b8}
+.btn:disabled{opacity:.3;cursor:default}
+.btn.go{background:var(--green);color:#fff;border-color:var(--green)}
+.btn.go:hover{background:var(--green-bd)}
+.results-card{background:#fff;border-radius:14px;padding:2.5rem;text-align:center;border:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.05);margin-bottom:1.25rem}
+.score-num{font-family:'Playfair Display',serif;font-size:5rem;font-weight:600;line-height:1}
+.score-sub{color:var(--text3);font-size:.85rem;margin-top:6px}
+.score-grade{font-size:1.1rem;font-weight:500;margin-top:10px}
+.rv-item{padding:9px 13px;border-radius:9px;margin-bottom:6px;font-size:.78rem;line-height:1.5;text-align:left}
+.rv-item.ok{background:var(--green-lt);border:1px solid #86efac}
+.rv-item.ng{background:var(--red-lt);border:1px solid #fca5a5}
+.rv-q{font-weight:600;color:var(--text);margin-bottom:2px}
+.rv-d{color:var(--text2)}
+@media(max-width:580px){.hdr h1{font-size:1.25rem}.score-num{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <div class="hdr-top">
+    <span class="chip">NURS 5209 · Exam 4</span>
+    <span class="chip">Blueprint Edition</span>
+    <span class="chip">Click answer → instant rationale</span>
+  </div>
+  <h1>Advanced Health Assessment Practice Exam</h1>
+  <p>Modules 10–14 · Chapters 18, 23, 24, 25, 26, 27 · 50 Questions</p>
+  <div class="prog-track"><div class="prog-fill" id="prog" style="width:2%"></div></div>
+  <div class="hdr-stats">
+    <span>Question <span class="sv" id="qn">1</span>/50</span>
+    <span>Answered: <span class="sv" id="ac">0</span></span>
+    <span>Correct: <span class="sv" id="cc">0</span></span>
+  </div>
+</div>
+<div id="qa"></div>
+</div>
+<script>
+const Q=[
+{mod:10,ch:18,topic:"BSE Timing",
+vig:"A 30-year-old with a regular 28-day cycle asks the NP when to do her monthly breast self-exam.",
+stem:"Which timing for BSE allows the most accurate detection of a breast lump?",
+opts:["Day 1 of the cycle — the first day of flow","Days 4–7 of the cycle","The week before the period","Any consistent day each month"],
+ans:1,rat:"Days 4–7 (counting from day 1 = first day of flow) is optimal because estrogen and progesterone are at their lowest — breast tissue is smallest and least congested, so any lump is easiest to distinguish. Premenstrual engorgement and nodularity can mask or mimic lumps."},
+
+{mod:10,ch:18,topic:"BSE Technique",
+vig:"The NP prepares to perform a breast exam with the patient supine. She places a small pillow under the patient's right shoulder and asks her to raise her right arm over her head before beginning palpation.",
+stem:"What is the PRIMARY purpose of these two positioning steps?",
+opts:["To make the patient more comfortable","To flatten breast tissue and displace it medially so lumps are more distinct","To expose the axillary tail only","To prevent the patient from moving"],
+ans:1,rat:"Pillow under the ipsilateral shoulder + arm overhead = FLATTENS breast tissue against the chest wall and displaces it MEDIALLY. This thins the tissue so any underlying lump feels more distinct. For pendulous breasts, also ask the patient to rotate hips to the opposite side. Palpation uses pads of the first 3 fingers with rotary motion, varying light, medium, and deep pressure."},
+
+{mod:10,ch:18,topic:"Breast Lump Features",
+vig:"On breast exam you palpate two masses. Mass A: soft, smooth, freely mobile, bilateral, cyclically tender. Mass B: stony hard, irregular borders, fixed to chest wall, nontender, unilateral.",
+stem:"Which finding is MOST concerning for malignancy?",
+opts:["Mass A — bilateral masses are more dangerous","Mass B — hard, irregular, and fixed features are classic for malignancy","Both masses require the same level of urgency","Neither — nontender masses are always benign"],
+ans:1,rat:"Malignant lump characteristics: HARD (stony, dense), IRREGULAR poorly defined borders, FIXED to underlying tissue or skin, typically NONTENDER (early cancer is painless), unilateral, constantly growing. Benign features (Mass A): soft or rubbery, smooth well-defined borders, FREELY MOBILE, cyclic tenderness. Remember the BREAST acronym for advanced cancer signs: Breast mass, Retraction, Edema, Axillary mass, Scaly nipple, Tender breast."},
+
+{mod:10,ch:18,topic:"Axillary Palpation",
+vig:"The NP is about to palpate a patient's left axillary lymph nodes.",
+stem:"Which technique is CORRECT for axillary lymph node palpation?",
+opts:["Patient raises her own arm; palpate with same-side hand","Patient sitting; NP supports the arm; uses right hand for left axilla; palpates in 4 directions","Patient supine with arm at side","Palpate only the central group — others are not clinically significant"],
+ans:1,rat:"Correct technique: patient SITTING; NP SUPPORTS the arm (relaxes pectoral/axillary muscles); use RIGHT hand for LEFT axilla. Reach fingers HIGH into the axilla apex; move firmly in 4 directions: (1) down the chest wall, (2) anterior border, (3) posterior border, (4) inner upper arm. Normal: may feel a small, soft, nontender central node. Enlarged or tender nodes suggest infection, breast cancer metastasis, or lymphoma."},
+
+{mod:10,ch:18,topic:"Tanner Staging",
+vig:"A mother asks the NP to explain the difference between her daughter's breast Stage 2 and Stage 3 development.",
+stem:"Which correctly distinguishes Tanner breast Stage 2 from Stage 3?",
+opts:["Stage 2: secondary mound above breast. Stage 3: only nipple protrudes","Stage 2: breast bud, widened areola, nipple flush with breast. Stage 3: further enlargement but areola and breast remain on the same plane","Stage 2: no tissue. Stage 3: breast budding","Stage 2 and 3 are identical — only age distinguishes them"],
+ans:1,rat:"Stage 2 = BREAST BUD — small glandular mound under nipple-areola; areola widens; nipple flush with breast. Stage 3 = further enlargement of breast AND areola, still on the SAME PLANE (no separate contour). Stage 4 = areola and nipple form a SECONDARY MOUND projecting above breast level. Stage 5 = mature; only nipple protrudes; areola flattens. Mean Stage 2 onset: Black 8.8 yr, Latina 9.2 yr, White 9.6 yr, Asian 9.9 yr."},
+
+{mod:10,ch:18,topic:"Delayed Puberty",
+vig:"A 15-year-old girl has no breast development and no pubic hair.",
+stem:"At what age does absent secondary sex characteristics define delayed puberty in a girl?",
+opts:["Age 10","Age 12","Age 14–15","Age 17"],
+ans:2,rat:"Delayed puberty in girls = NO secondary sex characteristics (no breast development, no pubic hair) by age 14–15. Most cases are constitutional delay of growth and puberty (CDGP) — a normal variant. Initial workup: bone age X-ray, FSH, LH, estradiol. Contrast with premature puberty = any secondary sex characteristic before age 7–8 (race-specific thresholds apply)."},
+
+{mod:10,ch:18,topic:"Gynecomastia",
+vig:"A 16-year-old male at Tanner Stage 4 is embarrassed about bilateral breast enlargement. You palpate a smooth, firm, movable subareolar disk bilaterally. No discharge.",
+stem:"What is this finding and what is the MOST important management step?",
+opts:["Male breast cancer — refer to oncology urgently","Physiologic adolescent gynecomastia — reassure the patient it is normal and usually resolves","Neurofibromatosis — surgically excise","Prolactin-secreting tumor — order brain MRI"],
+ans:1,rat:"Physiologic adolescent gynecomastia occurs in ~50% of boys at Tanner Stage 3–4 from a transient estrogen-testosterone imbalance. Feels like a smooth, firm, movable subareolar disk. RESOLVES SPONTANEOUSLY within 1–2 years. Most important step: REASSURANCE — adolescent body image is highly sensitive. Pathologic causes (steroids, medications, cirrhosis) should be ruled out if bilateral and persistent beyond 2 years or unilateral."},
+
+{mod:10,ch:27,topic:"HSV vs Syphilis",
+vig:"A 22-year-old presents with bilateral painful vulvar ulcers, fever, and tender inguinal lymph nodes for 4 days.",
+stem:"Which single feature MOST distinguishes HSV-2 from a syphilitic chancre?",
+opts:["Presence of inguinal lymphadenopathy","Bilateral, painful lesions — syphilis produces a single, painless, indurated ulcer","Fever and malaise","The depth of the ulcer"],
+ans:1,rat:"HSV-2 = BILATERAL, PAINFUL clusters of vesicles → ulcers + TENDER inguinal lymphadenopathy + systemic symptoms. Syphilitic chancre = SOLITARY, PAINLESS, INDURATED (button-like base when palpated between thumb and finger) + NONTENDER inguinal lymphadenopathy + no systemic symptoms. Painful and bilateral = HSV-2. Single painless indurated = syphilis."},
+
+{mod:10,ch:27,topic:"Incontinence Types",
+vig:"Four patients: A leaks with coughing; B has a sudden uncontrollable urge before leaking; C leaks small amounts constantly and strains to start urination; D cannot reach the bathroom due to hip arthritis.",
+stem:"Which correctly matches each patient to the type of incontinence?",
+opts:["A=Urge, B=Stress, C=Overflow, D=Functional","A=Stress, B=Urge, C=Overflow, D=Functional","A=Overflow, B=Mixed, C=Stress, D=Urge","A=Functional, B=Urge, C=Stress, D=Overflow"],
+ans:1,rat:"Stress = leakage with increased abdominal pressure (cough, sneeze, exercise) — weak sphincter/pelvic floor. Urge = sudden uncontrollable urge + large-volume loss before reaching toilet — overactive detrusor. Overflow = incomplete emptying → chronic overdistension → constant dribbling + straining — outlet obstruction or neurogenic detrusor. Functional = intact urinary tract but physical/cognitive barriers prevent timely toileting."},
+
+{mod:10,ch:25,topic:"Epispadias vs Hypospadias",
+vig:"A newborn male has the urethral meatus on the DORSAL surface of the glans.",
+stem:"What condition is this and what is the critical counseling point for parents?",
+opts:["Hypospadias — meatus is on the ventral surface; safe to circumcise","Epispadias — meatus is on the dorsal surface; advise parents NOT to consent to circumcision before urologic evaluation","Phimosis — retract the foreskin immediately","Normal variant — dorsal meatus is common in newborns"],
+ans:1,rat:"EPISPADIAS = meatus on the DORSAL (upper) surface — rare, more disabling than hypospadias due to associated urinary incontinence. HYPOSPADIAS = meatus on the VENTRAL (under) surface — most common congenital penile disorder (1:150–300). For BOTH: the foreskin tissue may be needed for surgical reconstruction — CIRCUMCISION IS CONTRAINDICATED before urologic evaluation and repair planning."},
+
+{mod:10,ch:26,topic:"BPH vs Normal Prostate",
+vig:"A 70-year-old man with urinary frequency, nocturia, hesitancy, and weak stream has a smooth, symmetric, firm-rubbery, nontender prostate on DRE. The median sulcus is no longer palpable.",
+stem:"What is the KEY DRE finding that distinguishes BPH from a normal prostate?",
+opts:["Stone-hard consistency","Obliterated median sulcus","Exquisite tenderness","Asymmetric nodule on the posterior lobe"],
+ans:1,rat:"The KEY BPH finding on DRE is the OBLITERATED MEDIAN SULCUS — as both lateral lobes enlarge symmetrically they grow together and eliminate the central groove. The surface remains smooth and consistency remains rubbery-to-firm (same as normal). Normal = sulcus PRESENT. BPH = sulcus GONE. Stone-hard fixed nodule = cancer. Exquisitely tender = prostatitis."},
+
+{mod:10,ch:26,topic:"Prostate Cancer",
+vig:"An asymptomatic 60-year-old man has a single hard, irregular nodule on the posterior prostate lobe. PSA is 9.4 ng/mL.",
+stem:"Why does the absence of urinary symptoms NOT rule out prostate cancer?",
+opts:["Prostate cancer always causes pain before other symptoms","Early prostate cancer is ASYMPTOMATIC — symptoms only appear with advanced or metastatic disease","PSA under 10 is always within normal limits","Hard nodules are always benign calcifications"],
+ans:1,rat:"EARLY prostate cancer is ASYMPTOMATIC — this is the most critical clinical pearl. Symptoms (urinary frequency, hesitancy, hematuria, lower back/pelvic pain) appear only with ADVANCED or METASTATIC disease. A hard, irregular, fixed posterior nodule + elevated PSA = refer to urology for TRUS-guided biopsy regardless of symptom status. The posterior peripheral zone — where ~70% of prostate cancers arise — is accessible on DRE."},
+
+{mod:10,ch:25,topic:"Testicular Cancer Risk",
+vig:"During a well-male visit, the NP counsels a 22-year-old male with a history of cryptorchidism about cancer risk.",
+stem:"Which is the SINGLE MOST IMPORTANT risk factor for testicular cancer?",
+opts:["Family history of prostate cancer","Undescended testis — even if surgically corrected","Varicocele","History of STI"],
+ans:1,rat:"UNDESCENDED TESTIS (cryptorchidism) is the most important risk factor for testicular cancer, even after surgical correction (orchiopexy). Testicular cancer is the most common solid malignancy in males ages 15–35. Most common presentation: PAINLESS solid mass on the testis. Virtually all testicular tumors are malignant. Cure rate with early detection approaches 100% — making TSE important for high-risk patients."},
+
+{mod:10,ch:25,topic:"Scrotal Mass",
+vig:"A 24-year-old male has a round, freely movable, nontender mass above and behind the right testis. The testis itself is normal. The mass transilluminates.",
+stem:"What is this finding?",
+opts:["Hydrocele — fluid surrounds the testis circumferentially","Spermatocele — a retention cyst of the epididymis located above and behind the testis that transilluminates","Testicular tumor — all transilluminating masses are tumors","Varicocele — tortuous veins that transilluminate"],
+ans:1,rat:"SPERMATOCELE: retention cyst of the EPIDIDYMIS filled with milky fluid containing sperm. Location: ABOVE and BEHIND the testis (epididymis head) — can feel like a 'third testis' when large. TRANSILLUMINATES. Nontender, round, freely movable. Distinguish from: HYDROCELE — circumferentially surrounds the testis, also transilluminates. TESTICULAR TUMOR — does NOT transilluminate (solid). VARICOCELE — tortuous veins ('bag of worms'), does NOT transilluminate."},
+
+{mod:10,ch:25,topic:"Hernia Exam",
+vig:"During a hernia exam, the NP invaginates scrotal skin with her index finger, follows the spermatic cord to the inguinal canal, and asks the patient to strain. A mass pushes against the SIDE of her finger.",
+stem:"Which hernia type does this indicate?",
+opts:["Indirect inguinal — touches the fingertip","Direct inguinal — pushes through the posterior canal wall and contacts the side of the finger","Femoral — found below the inguinal ligament","Incarcerated — any hernia touching the finger"],
+ans:1,rat:"INDIRECT hernia: enters through the INTERNAL inguinal ring → travels DOWN the canal → touches the FINGERTIP. DIRECT hernia: weakness in the POSTERIOR canal wall (Hesselbach's triangle) → pushes DIRECTLY THROUGH → touches the SIDE of the finger. FEMORAL hernia: BELOW the inguinal ligament — most common in women and has the highest incarceration risk. Most common hernia overall: INDIRECT inguinal (60%)."},
+
+{mod:10,ch:27,topic:"Bartholin Abscess",
+vig:"A 24-year-old woman has severe left labial pain, fever, and a very tender, fluctuant, hot, erythematous mass at the 5 o'clock position of the left posterior labia majora.",
+stem:"What is this and how does it differ from a Bartholin gland CYST?",
+opts:["Bartholin cyst — non-tender; treat with warm compresses only","Bartholin gland abscess — infected blocked duct (fluctuant, hot, erythematous, tender, may have fever); cyst = blocked duct WITHOUT infection (non-tender, no fever); abscess requires incision and drainage plus antibiotics","Vulvar varicosity — non-tender bluish mass","Skene's gland cyst — at the urethral meatus"],
+ans:1,rat:"BARTHOLIN CYST = blocked duct → accumulated secretions → smooth, NON-TENDER swelling at 5 or 7 o'clock, no fever, no erythema. BARTHOLIN ABSCESS = blocked duct + INFECTION → pus; EXQUISITELY TENDER, FLUCTUANT, HOT, ERYTHEMATOUS, may have fever + red spot at duct opening. Treatment: INCISION AND DRAINAGE + antibiotics + Word catheter placement to prevent recurrence. Location is always posterior labia majora at 5 or 7 o'clock."},
+
+{mod:10,ch:27,topic:"Bacterial Vaginosis",
+vig:"A 25-year-old has thin gray-white vaginal discharge with a 'fishy' odor. Vaginal walls appear normal. Vaginal pH is 5.2. Whiff test is positive.",
+stem:"What microscopic finding on saline wet mount CONFIRMS this diagnosis?",
+opts:["Branched hyphae","Clue cells — epithelial cells with stippled borders from adherent bacteria","Flagellated motile cells","Red blood cells"],
+ans:1,rat:"BACTERIAL VAGINOSIS (BV): Amsel criteria — 3 of 4: (1) thin gray-white discharge; (2) pH >4.5; (3) positive WHIFF TEST (fishy odor intensifies with KOH); (4) CLUE CELLS on saline wet mount — vaginal epithelial cells covered with adherent coccobacilli, giving a 'stippled' or 'granular' appearance. BV is NOT an STI — it results from overgrowth of anaerobes replacing Lactobacillus. No vaginal wall inflammation (distinguishes from Trichomonas and Candida). Treatment: metronidazole or clindamycin."},
+
+{mod:10,ch:27,topic:"Urethral Caruncle",
+vig:"A 68-year-old postmenopausal woman has dysuria, frequency, and occasional blood on tissue after urination. On exam there is a small, soft, bright red mass at the urethral meatus that bleeds when touched.",
+stem:"What is the MOST important thing to tell this patient about this finding?",
+opts:["It is premalignant — refer to oncology immediately","It is a benign estrogen-deficiency lesion — not malignant; treat with topical estrogen","It is caused by HPV — requires cryotherapy","It will resolve on its own without treatment in all cases"],
+ans:1,rat:"URETHRAL CARUNCLE: BENIGN, bright red, soft mass at the urethral meatus caused by ESTROGEN DEFICIENCY → urethral atrophy in postmenopausal women. The contact bleeding can frighten patients who fear malignancy — reassurance is critical. NOT malignant. Treatment: topical vaginal ESTROGEN cream (treats the atrophic cause) or surgical removal if significantly symptomatic. Most common in postmenopausal women."},
+
+{mod:10,ch:27,topic:"Ectopic Pregnancy",
+vig:"A 32-year-old woman has a positive urine pregnancy test and a tender, mobile, round mass lateral to the uterus palpated on bimanual exam.",
+stem:"Why is this a medical emergency?",
+opts:["All lateral adnexal masses require surgery","The fertilized ovum is implanted in the fallopian tube — if the tube ruptures it causes massive hemorrhage and can be fatal","This finding is expected in early normal pregnancy","It always indicates PID"],
+ans:1,rat:"ECTOPIC PREGNANCY: fertilized ovum implanted in the FALLOPIAN TUBE (most common). The tube cannot expand adequately → RUPTURE → massive hemorrhage → hemorrhagic SHOCK → DEATH if untreated. Positive pregnancy test + lateral tender adnexal mass = ectopic until proven otherwise. Late rupture signs: decreased BP, tachycardia, diaphoresis, shoulder tip pain. Diagnosis: transvaginal ultrasound. Management: methotrexate (unruptured) or surgery."},
+
+{mod:10,ch:27,topic:"Tanner Puberty Race",
+vig:"A mother is concerned that her 9-year-old Latina daughter has begun developing breast buds.",
+stem:"Which statement about puberty timing by race/ethnicity is CORRECT?",
+opts:["All girls should begin puberty at the same age regardless of race","Mean age of Stage 2 breast onset for Latina girls is 9.2 years — this is within normal limits","Any breast development before age 11 requires endocrinology referral","Puberty timing has no genetic or racial component"],
+ans:1,rat:"Puberty onset has significant racial and ethnic variation. Mean age of Stage 2 breast onset: BLACK 8.8 yr (earliest), LATINA 9.2 yr, WHITE 9.6 yr, ASIAN 9.9 yr (latest). A 9-year-old Latina girl at Stage 2 is perfectly within normal limits. The threshold for evaluation is NO development by age 14–15. Obesity is associated with earlier puberty onset across all groups."},
+
+{mod:11,ch:23,topic:"Phalen & Tinel",
+vig:"A data entry worker has right thumb, index, and middle finger numbness worst at night. She shakes her hand for relief.",
+stem:"Which TWO tests confirm carpal tunnel syndrome?",
+opts:["McMurray and Lachman","Phalen test and Tinel sign — both test median nerve compression at the carpal tunnel","Spurling's and Valsalva","Drop arm and empty can"],
+ans:1,rat:"PHALEN TEST: wrists flexed back-to-back at 90° for 60 seconds → POSITIVE = reproduction of symptoms in median nerve distribution. TINEL SIGN: percussion over the volar wrist → POSITIVE = burning/tingling ('electric shock') along the median nerve (thumb, index, middle, radial half of ring finger). Both tests confirm CARPAL TUNNEL SYNDROME from MEDIAN NERVE compression at the wrist. Nocturnal paresthesias relieved by 'shaking out' the hand (flick sign) is the classic history."},
+
+{mod:11,ch:23,topic:"Lasègue Test",
+vig:"A 45-year-old man reports low back pain radiating down his right leg to the foot. You raise his straight right leg slowly with him supine.",
+stem:"What constitutes a POSITIVE Lasègue (Straight Leg Raise) test?",
+opts:["Low back pain only with leg elevation","Reproduction of sciatic pain BELOW THE KNEE at 30°–70° of elevation","Hip and groin tightness","Pain only at 90° of elevation"],
+ans:1,rat:"LASÈGUE (SLR): positive = reproduction or worsening of SCIATIC PAIN BELOW THE KNEE at 30°–70° of elevation. Low back pain alone does NOT make it positive — the pain must radiate down the leg (dermatomal). Adding DORSIFLEXION of the foot worsens pain (stretches the sciatic nerve) = strongly positive. Crossed SLR (raising the unaffected leg reproduces contralateral symptoms) = highly specific for disc herniation. Most disc herniations: L4-L5 and L5-S1."},
+
+{mod:11,ch:23,topic:"McMurray Test",
+vig:"A 30-year-old soccer player has a knee that 'locks up.' McMurray test with external tibial rotation and valgus stress produces a clunk.",
+stem:"Which structure is affected and what is recommended management?",
+opts:["ACL — physical therapy only","Medial meniscus — refer to orthopedics and obtain MRI","Lateral collateral ligament — valgus stress test confirms","Patellar tendon — patellar tap test confirms"],
+ans:1,rat:"McMURRAY: EXTERNAL tibial rotation + valgus stress → tests MEDIAL meniscus. INTERNAL rotation + varus stress → LATERAL meniscus. Positive = palpable/audible CLUNK or joint line pain = meniscal tear. The medial meniscus is more firmly attached and less mobile → more commonly torn. Management: orthopedic referral + MRI (gold standard). Ottawa Knee Rules determine if plain X-ray is needed first."},
+
+{mod:11,ch:23,topic:"Shoulder ROM",
+vig:"An NP student is preparing for the OSCE shoulder examination.",
+stem:"Which set of shoulder ROM values is COMPLETELY correct?",
+opts:["Flexion 90°, Hyperextension 90°, Abduction 90°, Adduction 90°, IR 45°, ER 45°","Flexion 180°, Hyperextension 50°, Abduction 180°, Adduction 50°, IR 90°, ER 90°","Flexion 180°, Hyperextension 180°, Abduction 90°, Adduction 90°, IR 50°, ER 50°","Flexion 90°, Hyperextension 50°, Abduction 180°, Adduction 50°, IR 90°, ER 45°"],
+ans:1,rat:"Memorize by PAIRS: Flexion = Abduction = 180°. Hyperextension = Adduction = 50°. Internal Rotation = External Rotation = 90°. Limitation of INTERNAL ROTATION is the earliest and most sensitive sign of shoulder joint disease. SITS rotator cuff: Supraspinatus = abduction (most commonly torn), Infraspinatus = ER, Teres Minor = ER, Subscapularis = IR (only ANTERIOR muscle)."},
+
+{mod:11,ch:23,topic:"RA vs OA",
+vig:"A 62-year-old woman has symmetric, warm, boggy MCP and PIP swelling bilaterally, 2-hour morning stiffness, fatigue, weight loss, and positive RF.",
+stem:"Which feature MOST distinguishes RA from OA?",
+opts:["Age — OA only occurs after age 70","Morning stiffness lasting >1 hour + warm boggy synovial swelling + systemic features — OA has stiffness <30 min and hard bony swelling only","RA only affects the spine","Both cause identical joint changes"],
+ans:1,rat:"RA vs. OA key differences: RA = SYMMETRIC MCP/PIP (NOT DIP), WARM BOGGY swelling (synovial effusion), stiffness >1 HOUR, SYSTEMIC features (fatigue, weight loss, fever), RF+, anti-CCP+. OA = ASYMMETRIC, DIP joints (HEBERDEN nodes) and PIP (BOUCHARD nodes), HARD BONY osteophytes, stiffness <30 MINUTES ('gelling' improves with movement), NO systemic features, RF negative. Boggy (fluid) vs. bony (hard) swelling is the critical physical exam distinguisher."},
+
+{mod:11,ch:23,topic:"DEXA Screening",
+vig:"A 62-year-old White woman, no prior fractures, BMI 24, menopause at 53, asks about bone density screening.",
+stem:"When should this patient have her first DEXA scan?",
+opts:["Age 50 — all women start at menopause","By age 65 — with no major additional risk factors she can wait until then; FRAX can guide the decision","DEXA is not needed until she has a fracture","Only if she uses steroids or smokes"],
+ans:1,rat:"All women should have a DEXA by age 65 (USPSTF). Women under 65 with risk factors should be screened EARLIER (early menopause <45, family history, low BMI, smoking, alcohol, prior fragility fracture, chronic steroid use). This patient at 62 has menopause at 53 (not particularly early), normal BMI, and no other major risk factors — she can reasonably wait until 65. FRAX algorithm calculates 10-year fracture probability to guide treatment decisions."},
+
+{mod:11,ch:23,topic:"Infant Hip — Galeazzi",
+vig:"At a 4-month well-infant visit, with hips and knees flexed to 90°, the left knee appears lower than the right.",
+stem:"What test is being described and what does it suggest?",
+opts:["Barlow maneuver — tests if the hip can be dislocated","Galeazzi (Allis) test — unequal knee heights suggest DDH, leg-length discrepancy, or femoral shortening on the lower side","Ortolani maneuver — clunk with abduction means hip reduces","Thomas test — hip flexion contracture"],
+ans:1,rat:"GALEAZZI (ALLIS) TEST: with infant supine, hips and knees flexed 90°, feet flat — compare knee heights. POSITIVE = one knee LOWER → indicates leg-length discrepancy from the hip down. Causes: DDH (femoral head not in acetabulum → shortened apparent leg), actual femoral shortening. ORTOLANI = abduction → clunk = dislocated hip being REDUCED. BARLOW = adduction + posterior pressure → clunk = stable hip being DISLOCATED. Dr. Andelman mentioned the Allis test by name."},
+
+{mod:11,ch:23,topic:"Joint Types",
+vig:"A patient asks: 'What kind of joint is my knee and how is it different from the joints between my spinal vertebrae?'",
+stem:"Which correctly classifies the knee and the intervertebral joints?",
+opts:["Both are fibrous joints — immovable","Knee = synovial (freely movable); intervertebral discs = cartilaginous (slightly movable)","Knee = cartilaginous; intervertebral = fibrous","Both are synovial — all weight-bearing joints are synovial"],
+ans:1,rat:"FIBROUS = IMMOVABLE (skull sutures, tooth sockets). CARTILAGINOUS = SLIGHTLY MOVABLE (intervertebral discs, pubic symphysis, sacroiliac joints, manubriosternal joint). SYNOVIAL = FREELY MOVABLE (knee, hip, shoulder, elbow, wrist, finger joints) — enclosed in a capsule with synovial membrane, synovial fluid (lubricant), and ARTICULAR CARTILAGE (avascular — nourished by synovial fluid during motion, NOT at rest)."},
+
+{mod:12,ch:24,topic:"CN I Olfactory",
+vig:"The NP asks a patient to close his eyes and identify the smell of coffee held under his nose. He correctly identifies it on the right side but cannot detect any smell on the left.",
+stem:"What does left-sided anosmia WITHOUT nasal congestion suggest?",
+opts:["Normal aging — smell always diminishes on one side first","CN I (Olfactory) nerve damage on the left — causes include head trauma, frontal lobe tumor, early Parkinson's, Alzheimer's, or COVID-19","CN II damage — the optic nerve also mediates smell","This is a normal variant requiring no further evaluation"],
+ans:1,rat:"Unilateral anosmia (inability to smell) WITHOUT nasal congestion = CN I (OLFACTORY NERVE) pathology on that side. Causes: HEAD TRAUMA (shear injury to olfactory filaments through the cribriform plate), frontal lobe or olfactory groove TUMOR, early PARKINSON'S DISEASE (CN I loss is often the FIRST neurologic sign), ALZHEIMER'S DISEASE, COVID-19 (SARS-CoV-2 damages olfactory sustentacular cells). CN I is the only cranial nerve that does not synapse in the thalamus first."},
+
+{mod:12,ch:24,topic:"CN VII Facial",
+vig:"A 52-year-old woman cannot close her right eye, cannot raise her right eyebrow, and has right-sided facial droop including the mouth corner.",
+stem:"What does involvement of BOTH upper and lower face (including the forehead) indicate about the lesion location?",
+opts:["Central (UMN) lesion — stroke affecting the left motor cortex","Peripheral (LMN) lesion — the entire peripheral CN VII to all ipsilateral facial muscles is damaged, including the forehead","Bilateral cortical lesion","CN V trigeminal nerve damage"],
+ans:1,rat:"FOREHEAD INVOLVEMENT = key localizer. PERIPHERAL (LMN) lesion (Bell's palsy): ALL ipsilateral facial muscles affected including the FOREHEAD (cannot raise eyebrow) — the peripheral nerve carries fibers to both upper and lower face. CENTRAL (UMN) lesion (stroke): FOREHEAD SPARED — the forehead has bilateral cortical representation so the intact contralateral hemisphere continues to innervate it → only LOWER face weakness. Rule: forehead involved = peripheral. Forehead spared = central."},
+
+{mod:12,ch:24,topic:"Wernicke's Aphasia",
+vig:"A 68-year-old suddenly speaks rapidly and fluently, but his speech is filled with nonsensical words and made-up words. He seems unaware anything is wrong.",
+stem:"What type of aphasia is this and which lobe is damaged?",
+opts:["Broca's aphasia — left frontal lobe; non-fluent with intact comprehension","Wernicke's aphasia — left temporal lobe; fluent but nonsensical speech; severely impaired comprehension; patient unaware of errors","Global aphasia — both frontal and temporal lobes","Anomic aphasia — parietal lobe; only word-finding difficulty"],
+ans:1,rat:"WERNICKE'S APHASIA (receptive/fluent): LEFT TEMPORAL LOBE — Wernicke's area. Features: FLUENT rapid speech filled with PARAPHASIAS and NEOLOGISMS; severely IMPAIRED comprehension; patient UNAWARE of errors (anosognosia). BROCA'S APHASIA (expressive/non-fluent): LEFT FRONTAL LOBE — halting, effortful, telegraphic speech; INTACT comprehension; patient AWARE and FRUSTRATED. Memory: Wernicke = Temporal = comprehension. Broca = Frontal = production."},
+
+{mod:12,ch:24,topic:"Parietal Lobe",
+vig:"A patient sustains a right parietal lobe stroke.",
+stem:"Which deficit is MOST expected?",
+opts:["Non-fluent aphasia — Broca's area","Left-sided sensory loss and possible hemispatial neglect — the parietal lobe mediates somatosensory function contralaterally","Bilateral hearing loss","Loss of personality and behavior"],
+ans:1,rat:"Cerebral lobe functions: FRONTAL = personality, behavior, emotions, intellectual function, Broca's area (speech production). PARIETAL = SENSATION (somatosensory cortex), spatial awareness, graphesthesia, stereognosis, two-point discrimination. TEMPORAL = hearing, taste, smell, Wernicke's area (language comprehension). OCCIPITAL = vision. Right parietal lesion → LEFT-sided sensory deficits (contralateral). May also cause LEFT hemispatial NEGLECT — patient ignores the left half of the environment."},
+
+{mod:12,ch:24,topic:"Myelination",
+vig:"A 4-month-old holds her head up steadily but cannot yet sit or use her hands with precision.",
+stem:"Which developmental principle explains why head control develops before sitting and before fine motor skills?",
+opts:["Random motor skill development — individual variation only","Cephalocaudal and proximodistal myelination — head control (cervical) precedes trunk/sitting (thoracic-lumbar); shoulder control precedes hand/finger dexterity","Myelination is complete at birth — it is only muscle strength that develops","Gravitational forces determine motor development order"],
+ans:1,rat:"MYELINATION determines motor milestone ORDER: CEPHALOCAUDAL (head to tail): head control → rolling/sitting → standing/walking. PROXIMODISTAL (trunk outward): shoulder → arm → wrist → finger dexterity. Unmyelinated fibers conduct slowly and unreliably. The CORTICOSPINAL TRACT continues myelinating through the 2nd year of life — this is why the Babinski sign is NORMAL in infants up to 12–24 months."},
+
+{mod:12,ch:24,topic:"TUG Test",
+vig:"An 81-year-old man completes the TUG test in 18 seconds. His gait is wide-based and he staggers slightly on turns.",
+stem:"What does this result indicate about fall risk and gait pathology?",
+opts:["Normal for his age — no fall prevention needed","Moderate fall risk (12–20 sec); wide-based staggering suggests cerebellar ataxia — neurologic assessment warranted","High fall risk (>20 sec) — hospitalize immediately","Low fall risk — repeat annually"],
+ans:1,rat:"TUG: <12 sec = low risk; 12–20 sec = MODERATE risk; >20 sec = HIGH risk. At 18 sec = MODERATE fall risk → fall prevention interventions (PT referral, home safety, medication review). QUALITATIVE findings: WIDE-BASED STAGGERING = cerebellar ataxia. SHUFFLING = Parkinsonism. CIRCUMDUCTING leg = hemiplegia. HIGH-STEPPING = footdrop. The TUG provides both quantitative (time) AND qualitative (gait pattern) data."},
+
+{mod:12,ch:24,topic:"Dermatomes",
+vig:"A 55-year-old man has numbness and tingling over his right THUMB and lateral forearm after a fall.",
+stem:"Which nerve root level corresponds to the thumb?",
+opts:["C8 — the little finger","C6 — the thumb and lateral forearm","C7 — the middle finger","T1 — the axilla"],
+ans:1,rat:"KEY DERMATOME LANDMARKS: C6 = THUMB (and lateral forearm, index finger). C7 = MIDDLE finger. C8 = LITTLE finger. T1 = axilla. T4 = nipple. T10 = umbilicus. L1 = groin. L4 = knee. S1 = lateral foot/heel. Thumb + lateral forearm = C6 territory. Most common cause: C6 nerve root compression from herniated disc at C5-C6. C6 also mediates the biceps reflex and wrist extensor strength."},
+
+{mod:12,ch:24,topic:"Alzheimer's vs Normal Aging",
+vig:"An 80-year-old man occasionally forgets a word mid-sentence but remembers it later. His wife is concerned but he lives independently and manages all his finances.",
+stem:"Which finding would be an EARLY WARNING SIGN of Alzheimer's disease rather than normal aging?",
+opts:["Occasionally forgetting a word but remembering it later — this is normal aging","Asking the same question multiple times within one conversation without any memory of having asked before — failure to encode new short-term memories","Forgetting breakfast but remembering significant life events","Slowing of processing speed with aging"],
+ans:1,rat:"NORMAL AGING: forget a word but remember it later; misplace things but retrace steps; occasionally confused about the day. EARLY ALZHEIMER'S SIGNS: (1) Same question asked MULTIPLE TIMES — cannot encode new memories; (2) Getting LOST in familiar places; (3) Unable to follow simple instructions; (4) Forgetting recent conversations even when PROMPTED; (5) FUNCTIONAL IMPAIRMENT (safety incidents, cannot manage finances). Underlying pathology: amyloid plaques + neurofibrillary tangles; atrophy of TEMPORAL and PARIETAL lobes, especially HIPPOCAMPUS."},
+
+{mod:12,ch:24,topic:"UMN vs LMN",
+vig:"A post-stroke patient has right arm spasticity, 3+ biceps reflex, and upgoing great toe with fanning on plantar stimulation of the right foot.",
+stem:"Which combination CONFIRMS an upper motor neuron lesion?",
+opts:["Flaccidity + areflexia + atrophy + fasciculations","Spasticity + hyperreflexia + positive Babinski sign — all three are UMN findings","Hyporeflexia + positive Babinski + atrophy","Cogwheel rigidity + resting tremor + bradykinesia"],
+ans:1,rat:"UMN LESION triad: (1) SPASTICITY (velocity-dependent increased tone), (2) HYPERREFLEXIA (3+–4+) + clonus, (3) POSITIVE BABINSKI SIGN — great toe dorsiflexes upward + other toes fan out. BABINSKI is the most specific sign of corticospinal tract disease in adults (normal in infants up to 12–24 months). LMN LESION: FLACCIDITY, HYPOREFLEXIA/AREFLEXIA, MARKED ATROPHY, FASCICULATIONS, NO Babinski."},
+
+{mod:12,ch:24,topic:"Neuro History",
+vig:"A 45-year-old presents for a neurologic history. The NP knows to ask about symptoms in associated systems.",
+stem:"Which group of associated findings is MOST important to include in a neurologic history?",
+opts:["Only cardiovascular symptoms","Cardiovascular (HTN, afib), psychiatric (personality/mood), vision (diplopia), bowel/bladder dysfunction, musculoskeletal (weakness, falls), and systemic (fever, weight loss)","Only psychiatric symptoms","Only musculoskeletal weakness"],
+ans:1,rat:"Neurologic disease has wide multisystem associations: CARDIOVASCULAR: HTN, afib, MI, TIA → stroke risk; diabetes → peripheral neuropathy. PSYCHIATRIC: personality changes, mood, psychosis → frontal lobe disease, encephalopathy. VISION: diplopia, visual loss → CN III/IV/VI, optic nerve, occipital lobe. BOWEL/BLADDER: incontinence or retention → spinal cord lesion. MUSCULOSKELETAL: weakness, falls, tremor → motor system. SYSTEMIC: fever (meningitis/encephalitis), weight loss (malignancy/paraneoplastic syndrome)."},
+
+{mod:12,ch:24,topic:"Pathologic Reflexes",
+vig:"When the NP gently taps the perioral region of an 82-year-old with advanced Alzheimer's, he involuntarily puckers his lips. When she touches his palm, he grips tightly and cannot release voluntarily.",
+stem:"What are these signs and what does the grasp reflex specifically indicate about disease severity?",
+opts:["Normal reflexes in elderly adults","Snout reflex (lip puckering) and grasp reflex are frontal release signs — the grasp reflex is the LAST to appear, indicating the most advanced frontal lobe disease","Babinski and Hoffmann signs — corticospinal tract disease","Kernig's and Brudzinski's signs — meningeal irritation"],
+ans:1,rat:"FRONTAL RELEASE SIGNS = primitive reflexes that re-emerge when frontal lobes are diseased: SNOUT REFLEX: perioral tap → lip puckering = frontal lobe disease (Alzheimer's, ALS, corticobulbar lesions). SUCKING REFLEX: oral touch → sucking movements. GRASP REFLEX: palmar touch → forced grasping (cannot release) — appears LAST = most advanced/severe frontal disease. Bilateral = diffuse bifrontal disease. Unilateral = contralateral frontal lesion."},
+
+{mod:12,ch:24,topic:"Romberg Test",
+vig:"A 70-year-old diabetic woman stands steadily with eyes open but sways significantly when she closes her eyes.",
+stem:"What does a positive Romberg test indicate?",
+opts:["Cerebellar ataxia — cerebellum needs vision to function","Loss of proprioception or vestibular function — the patient relies on vision to compensate for the deficit; closing eyes removes the visual cue and reveals the underlying sensory loss","UMN disease — positive Babinski always accompanies a positive Romberg","Normal aging — all elderly patients sway with eyes closed"],
+ans:1,rat:"ROMBERG TEST: POSITIVE = steady with eyes OPEN but sways/falls with eyes CLOSED. Interpretation: the patient is DEPENDENT ON VISION to maintain balance → indicates a PRIMARY DEFICIT in PROPRIOCEPTION (dorsal column disease, peripheral neuropathy — as in this diabetic patient with likely large fiber neuropathy) or VESTIBULAR function. CEREBELLAR ATAXIA: unsteady with BOTH eyes open AND closed (does not rely on vision to balance). The Romberg differentiates posterior column/vestibular (positive) from cerebellar (negative) causes."},
+
+{mod:13,ch:23,topic:"PPE Orthopedic",
+vig:"A 16-year-old soccer player undergoes the orthopedic screening portion of his sports PPE.",
+stem:"Which components are included in the PPE orthopedic screening?",
+opts:["Full joint-by-joint arthritis assessment of every joint","Posture, gait, symmetric muscle bulk, ROM screening, scoliosis screen (Adams forward bend), and sport-specific functional tests (duck walk, single-leg hop)","Full MRI of all joints","Only the knee — most common soccer injury"],
+ans:1,rat:"PPE ORTHOPEDIC SCREEN: (1) POSTURE — scoliosis, kyphosis, lordosis; (2) GAIT — normal walk, heel-toe; (3) MUSCLE BULK — symmetric inspection; (4) ROM SCREENING — cervical, shoulder, elbow, wrist, hip, knee, ankle; (5) SCOLIOSIS — Adams forward bend test (rib hump on convex side); (6) FUNCTIONAL TESTS — duck walk (hip/knee), single-leg balance (ankle/proprioception), single-leg hop (knee strength), deep knee bend. Goal is IDENTIFICATION, not disqualification."},
+
+{mod:13,ch:23,topic:"HCM Murmur",
+vig:"A 17-year-old athlete has a systolic murmur at the left sternal border that is louder when he stands and softer when he squats.",
+stem:"What is the diagnosis and the correct management before sports clearance?",
+opts:["Innocent flow murmur — clear for participation","Hypertrophic cardiomyopathy — do NOT clear; refer for ECG and echocardiogram","Mitral valve prolapse — clear with annual follow-up","Aortic stenosis — louder with squatting in AS"],
+ans:1,rat:"HCM DYNAMIC MURMUR: LOUDER with STANDING (↓ preload → smaller LV → more outflow obstruction). SOFTER with SQUATTING (↑ preload → larger LV → less obstruction). HCM = #1 cause of SUDDEN CARDIAC DEATH in young athletes. Do NOT clear until: 12-lead ECG + echocardiogram (asymmetric septal hypertrophy) + cardiology evaluation. Exercise-induced syncope, chest pain, or a family history of sudden death under age 50 are additional HCM red flags."},
+
+{mod:13,ch:23,topic:"PPE Purpose",
+vig:"Parents of a 14-year-old gymnast ask: 'Is this physical designed to stop her from competing?'",
+stem:"What is the PRIMARY purpose of the PPE and what component identifies the most problems?",
+opts:["To exclude high-risk athletes to protect schools from liability","To identify conditions that may predispose to injury or death — NOT to exclude; the medical HISTORY identifies ~75% of all problems","To document baseline fitness for insurance","To screen for performance-enhancing drug use"],
+ans:1,rat:"PPE PURPOSE: IDENTIFY (not exclude) conditions that may increase an athlete's risk of injury or death — the goal is SAFE participation. The MEDICAL HISTORY identifies approximately 75% of ALL problems discovered during the PPE and is the single most important component. Physical exam focuses on cardiac (auscultation, dynamic maneuvers, bilateral BP, femoral pulses), musculoskeletal, neurologic, vision, and skin. Very few athletes are ultimately disqualified — most can participate with modifications."},
+
+{mod:13,ch:23,topic:"Coarctation of Aorta",
+vig:"During a sports PPE, an 18-year-old male has BP of 140/88 in the right arm and 88/54 in the left arm. Femoral pulses are diminished bilaterally.",
+stem:"What condition is suggested and what confirms it?",
+opts:["Essential hypertension — BP asymmetry is a normal variant","Coarctation of the aorta — significant BP difference between arms plus diminished femoral pulses is the classic presentation; confirmed by echocardiography","Athletic heart syndrome","Right subclavian artery stenosis only"],
+ans:1,rat:"COARCTATION OF THE AORTA: congenital narrowing of the aortic arch. Classic findings: (1) SIGNIFICANT BP DIFFERENCE BETWEEN ARMS (>10–15 mmHg systolic); (2) HYPERTENSION in upper extremities; (3) DIMINISHED or ABSENT FEMORAL PULSES (reduced flow to lower body). AHA PPE specifically includes bilateral arm BP + femoral pulse assessment for this reason. Confirmed by echocardiography. Risk: AORTIC DISSECTION/RUPTURE during intense exercise if undetected."},
+
+{mod:14,ch:99,topic:"Stroke / tPA Window",
+vig:"A 54-year-old has sudden right facial droop, right arm weakness, and slurred speech beginning 45 minutes ago.",
+stem:"What is the MOST critical first action?",
+opts:["Give aspirin and observe in urgent care for 2 hours","Immediate transfer to a stroke-capable ED — IV tPA must be given within 4.5 hours of symptom onset; time is brain","Order a CT scan at the urgent care before deciding","Call the patient's PCP for guidance"],
+ans:1,rat:"ACUTE STROKE: 'TIME IS BRAIN' — ~1.9 million neurons die per minute. IV tPA (alteplase) window: 4.5 HOURS from last known well. This patient is 45 minutes in — well within the window. IMMEDIATELY transfer to a stroke center. While arranging transfer: IV access, supplemental O2 (SpO2 ≥94%), fingerstick glucose (hypoglycemia mimics stroke), 12-lead EKG (look for afib). Do NOT give aspirin if tPA is being considered. Mechanical thrombectomy may be possible up to 6–24 hours in selected patients."},
+
+{mod:14,ch:99,topic:"EMTALA",
+vig:"A rural urgent care receives a patient with a compound femur fracture and uncontrolled hemorrhage. The clinic has no surgical capabilities.",
+stem:"What does EMTALA require the NP to do?",
+opts:["EMTALA prohibits transferring any actively hemorrhaging patient","Stabilize to the best of the facility's ability (tourniquet, IV access, fluids) THEN transfer appropriately to a trauma-capable facility via ALS transport","Do nothing until a physician arrives","Send the patient directly to the receiving facility without any treatment"],
+ans:1,rat:"EMTALA requirements: (1) STABILIZE to the extent of the current facility's capability — tourniquet/direct pressure, IV access, aggressive fluid resuscitation. (2) APPROPRIATE TRANSFER when the facility cannot provide definitive care — transfer is MANDATORY, not prohibited. Requirements for appropriate transfer: benefits outweigh risks; receiving facility accepts; appropriate transport (ALS ambulance); all records and treatments accompany the patient. EMTALA does NOT prohibit transferring unstable patients — stabilize first, THEN transfer appropriately."},
+
+{mod:14,ch:99,topic:"POLST vs Advance Directive",
+vig:"A 76-year-old with end-stage COPD has a POLST stating 'DNR/DNI — Comfort Measures Only.' He is unresponsive with SpO2 74%. His daughter insists on intubation.",
+stem:"What distinguishes a POLST from a standard advance directive?",
+opts:["They are identical — the daughter's wishes as next of kin override both","POLST is an actual physician-signed medical ORDER immediately actionable across all care settings; honor the POLST and provide comfort care — the daughter cannot override it","POLST only applies in nursing homes","The NP should intubate and call the ethics committee"],
+ans:1,rat:"POLST = PHYSICIAN-SIGNED MEDICAL ORDER specifying resuscitation, level of intervention, and nutrition wishes. Unlike a standard advance directive (a patient-signed document that may not be immediately actionable), the POLST is actionable by EMERGENCY RESPONDERS and travels across ALL care settings. The daughter WITHOUT healthcare proxy designation cannot override a valid POLST. NP obligations: (1) Honor the POLST — do not intubate; (2) Comfort care (opioids for dyspnea, anxiolytics, positioning); (3) Educate family respectfully; (4) Document thoroughly."},
+
+{mod:14,ch:99,topic:"Febrile Infant <3 Months",
+vig:"A 5-week-old infant has a rectal temperature of 38.4°C. She appears well and is feeding normally. The mother wants to go home and monitor.",
+stem:"Why is discharge without workup NOT appropriate for this infant?",
+opts:["It is appropriate — a well-appearing, feeding infant with low-grade fever does not need workup","Fever ≥38°C in infants <3 months ALWAYS requires full sepsis evaluation regardless of appearance: CBC, blood culture, urinalysis + urine culture (catheter), and LP in most cases; well appearance does NOT rule out serious bacterial infection","Only a urinalysis is needed","Give IM ceftriaxone and discharge with oral antibiotics"],
+ans:1,rat:"FEBRILE INFANT <3 MONTHS: the immune system is immature — serious bacterial infections (meningitis, bacteremia, UTI) CAN PRESENT WITH A WELL-APPEARING INFANT. A well appearance is NOT reassuring in this age group. Full sepsis evaluation: (1) CBC with differential; (2) Blood culture; (3) UA + urine culture — CATHETER specimen (bag specimen has too high false-positive rate); (4) LP with CSF analysis in most cases; (5) Hospital admission + empiric IV antibiotics pending cultures."},
+
+{mod:14,ch:99,topic:"SOAP Note",
+vig:"A nurse practitioner documents: 'BP 142/88, HR 96, Temp 37.2°C. Lungs: clear bilaterally. Abdomen: soft, nontender.'",
+stem:"In which SOAP section does this information belong?",
+opts:["Subjective — the patient reported these findings","Objective — these are clinician-measured and observed data points","Assessment — these findings help establish the diagnosis","Plan — these measurements guide treatment decisions"],
+ans:1,rat:"SOAP structure: SUBJECTIVE (S) = what the PATIENT REPORTS (symptoms, history, ROS — all patient-reported). OBJECTIVE (O) = what the CLINICIAN MEASURES or OBSERVES — vital signs, physical exam findings, lab results, imaging results, EKG findings. Vital signs are always OBJECTIVE — they are clinician measurements, not patient reports. ASSESSMENT (A) = clinician's interpretation/diagnosis. PLAN (P) = management steps. A common exam error is placing vital signs in the Subjective section."},
+
+{mod:14,ch:99,topic:"H&P vs SOAP",
+vig:"A new NP asks her preceptor to explain the difference between a comprehensive H&P and a SOAP note.",
+stem:"Which statement BEST distinguishes the H&P from the SOAP note?",
+opts:["They are different names for the same document","The H&P is comprehensive (new patients/annual exams) and includes complete PMH, family history, social history, 14-system ROS, and complete physical exam; the SOAP note is episodic and focused on the current problem","The SOAP note is more comprehensive than the H&P","The H&P is only used in inpatient hospital settings"],
+ans:1,rat:"COMPREHENSIVE H&P: used for NEW PATIENTS and annual well visits. Components: identifying information → CC → HPI → Past Medical History (all diagnoses, surgeries, hospitalizations) → Medications + Allergies → FAMILY HISTORY → SOCIAL HISTORY (tobacco, alcohol, drugs, occupation, sexual history, diet, exercise, safety screening) → 14-SYSTEM REVIEW OF SYSTEMS → Complete physical exam → Assessment → Plan. SOAP NOTE: episodic/follow-up visits; focused on the CURRENT PROBLEM with pertinent targeted information only. The H&P is far more comprehensive."},
+];
+
+let cur=0,cor=Array(50).fill(false),sub=Array(50).fill(false);
+
+function render(){
+  const q=Q[cur],done=sub[cur];
+  const opts=q.opts.map((o,i)=>{
+    let c='opt';
+    if(done){
+      c+=' locked';
+      if(i===q.ans)c+=' correct';
+      else if(sub[cur]&&i!==q.ans&&document.getElementById('opt-'+cur+'-'+i)?.classList.contains('sel'))c+=' wrong';
+    }
+    return `<div class="${c}" id="opt-${cur}-${i}" onclick="pick(${i})" data-i="${i}"><span class="ol">${'ABCD'[i]}.</span><span>${o}</span></div>`;
+  }).join('');
+  const rat=`<div class="rat ${done?(cor[cur]?'ok':'ng'):''} ${done?'show':''}" id="rat-${cur}">
+    <div class="rat-hdr">${done?(cor[cur]?'✓ Correct!':'✗ Incorrect — Correct answer: '+'ABCD'[q.ans]+'.'):''}</div>
+    ${q.rat}
+  </div>`;
+  const answered=sub.filter(Boolean).length,correct=cor.filter(Boolean).length;
+  document.getElementById('prog').style.width=Math.round(((cur+1)/50)*100)+'%';
+  document.getElementById('qn').textContent=cur+1;
+  document.getElementById('ac').textContent=answered;
+  document.getElementById('cc').textContent=correct;
+  document.getElementById('qa').innerHTML=`<div class="card">
+    <div class="q-meta">
+      <span class="tag tag-mod">Module ${q.mod}</span>
+      <span class="tag tag-ch">Ch ${q.ch}</span>
+      <span class="tag tag-topic">${q.topic}</span>
+    </div>
+    ${q.vig?`<div class="vig">${q.vig}</div>`:''}
+    <div class="stem">${q.stem}</div>
+    ${opts}${rat}
+  </div>
+  <div class="nav">
+    <button class="btn" onclick="go(cur-1)" ${cur===0?'disabled':''}>← Prev</button>
+    ${cur<49?`<button class="btn" onclick="go(cur+1)">Next →</button>`:''}
+    ${cur===49&&done?`<button class="btn go" onclick="results()">Final Score →</button>`:''}
+  </div>`;
+}
+
+function pick(i){
+  if(sub[cur])return;
+  // mark the clicked option visually before locking
+  document.querySelectorAll('.opt').forEach(el=>el.classList.remove('sel'));
+  const el=document.getElementById('opt-'+cur+'-'+i);
+  if(el)el.classList.add('sel');
+  // lock and reveal rationale
+  sub[cur]=true;
+  cor[cur]=(i===Q[cur].ans);
+  // apply correct/wrong classes
+  document.querySelectorAll('.opt').forEach(el=>{
+    const idx=parseInt(el.dataset.i);
+    el.classList.add('locked');
+    if(idx===Q[cur].ans)el.classList.add('correct');
+    else if(idx===i&&i!==Q[cur].ans)el.classList.add('wrong');
+  });
+  // show rationale
+  const rat=document.getElementById('rat-'+cur);
+  if(rat){
+    rat.classList.add('show');
+    rat.classList.add(cor[cur]?'ok':'ng');
+    rat.querySelector('.rat-hdr').textContent=cor[cur]?'✓ Correct!':'✗ Incorrect — Correct answer: '+'ABCD'[Q[cur].ans]+'.';
+  }
+  // update stats
+  document.getElementById('ac').textContent=sub.filter(Boolean).length;
+  document.getElementById('cc').textContent=cor.filter(Boolean).length;
+  // add final score button if last question
+  if(cur===49){
+    const nav=document.querySelector('.nav');
+    const btn=document.createElement('button');
+    btn.className='btn go';
+    btn.textContent='Final Score →';
+    btn.onclick=results;
+    nav.appendChild(btn);
+  }
+}
+
+function go(i){if(i<0||i>49)return;cur=i;render();}
+
+function results(){
+  const tot=cor.filter(Boolean).length,pct=Math.round((tot/50)*100);
+  let grade='',gc='var(--red)';
+  if(pct>=90){grade='A — Exam ready! 🎉';gc='var(--green)';}
+  else if(pct>=80){grade='B — Good — review missed topics';gc='var(--teal)';}
+  else if(pct>=70){grade='C — Needs more review';gc='var(--amber)';}
+  else{grade='Below passing — intensive review recommended';}
+  const rv=Q.map((q,i)=>{
+    const ok=cor[i];
+    return `<div class="rv-item ${ok?'ok':'ng'}">
+      <div class="rv-q">Q${i+1} · Ch${q.ch} · ${q.topic}</div>
+      <div class="rv-d">${ok?'✓ Correct':'✗ Incorrect — Answer: '+'ABCD'[q.ans]}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('prog').style.width='100%';
+  document.getElementById('qa').innerHTML=`
+    <div class="results-card">
+      <div class="score-num" style="color:${gc}">${pct}%</div>
+      <div class="score-sub">${tot} of 50 correct</div>
+      <div class="score-grade" style="color:${gc}">${grade}</div>
+    </div>
+    <div style="margin-bottom:1rem"><button class="btn" onclick="go(0)">← Review questions</button></div>
+    ${rv}`;
+}
+render();
+</script>
+</body>
+</html>
